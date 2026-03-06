@@ -4,29 +4,6 @@
 
 Below is a list of all the applications I use on my system, as managed via this TrueCharts catalog. To replicate this setup, ensure you have added this catalog as described above, then install the following apps:
 
-### Installed Applications
-
-- bazarr
-- cert-manager
-- cloudnative-pg
-- clusterissuer
-- flaresolverr
-- home-assistant
-- mosquitto
-- nzbget
-- ollama-api-passthrough
-- ombi
-- open-webui
-- openebs
-- overseerr
-- plex
-- portainer
-
-# TrueNAS SCALE catalog
-
-## Replicating My TrueNAS SCALE App Setup
-
-Below is a list of all the applications I use on my system, as managed via this TrueCharts catalog. To replicate this setup, ensure you have added this catalog as described above, then install the following apps:
 
 ### Installed Applications
 
@@ -44,8 +21,8 @@ Below is a list of all the applications I use on my system, as managed via this 
 - openebs
 - overseerr
 - plex
-- portainer
 - prometheus-operator
+- portainer
 - prowlarr
 - qbittorrent
 - radarr
