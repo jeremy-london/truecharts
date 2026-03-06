@@ -18,6 +18,13 @@ This skill provides a method to find the latest version of a given chart or appl
 2. **Parse:** Normalize and parse the version strings, ignoring non-semver or malformed entries if needed.
 3. **Compare:** Use semantic versioning rules to compare versions.
 4. **Output:** Return the highest (latest) version found.
+5. **TrueNAS SCALE Folder-Based Chart Versioning:**
+    - When updating an app/chart, do NOT overwrite the existing version folder.
+    - Instead, create a new folder named for the new chart version (e.g., 20.2.4/ for bazarr).
+    - Copy all files from the previous version's folder into the new version folder.
+    - Update the appVersion and version fields in the new folder's Chart.yaml to the new values.
+    - This folder-based approach is required for TrueNAS SCALE to detect and offer updates in the UI.
+    - Do not modify or delete previous version folders; always add a new one for each update.
 
 ## Example (Python)
 ```python
