@@ -1,0 +1,44 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: docker.io/filebrowser/filebrowser
+  tag: v2.61.2@sha256:40e1185f13edf70be8e5ce0b2fb43cdd80900b1fc921e2256ab86c7865d56ec5
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+  data:
+    enabled: true
+    mountPath: /data
+  database:
+    enabled: true
+    mountPath: /database
+portal:
+  open:
+    enabled: true
+service:
+  main:
+    ports:
+      main:
+        port: 10187
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            FB_ADDRESS: ''
+            FB_BASEURL: ''
+            FB_CONFIG: /config/filebrowser.json
+            FB_DATABASE: /database/filebrowser.db
+            FB_PORT: '{{ .Values.service.main.ports.main.port }}'
+            FB_ROOT: /data
+          probes:
+            liveness:
+              path: /
+              type: http
+            readiness:
+              path: /
+              type: http
+            startup:
+              path: /
+              type: http
