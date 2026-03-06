@@ -1,27 +1,85 @@
+
+# TrueNAS SCALE catalog
+## Replicating My TrueNAS SCALE App Setup
+
+Below is a list of all the applications I use on my system, as managed via this TrueCharts catalog. To replicate this setup, ensure you have added this catalog as described above, then install the following apps:
+
+### Installed Applications
+
+- bazarr
+- cert-manager
+- cloudnative-pg
+- clusterissuer
+- flaresolverr
+- home-assistant
+- mosquitto
+- nzbget
+- ollama-api-passthrough
+- ombi
+- open-webui
+- openebs
+- overseerr
+- plex
+- portainer
+
 # TrueNAS SCALE catalog
 
-This is a fork of [a forked TrueCharts App Catalog archive](https://github.com/v3DJG6GL/truecharts_archive) for TrueNAS SCALE to keep a few apps that I have deployed updated.
+## Replicating My TrueNAS SCALE App Setup
 
-## How to change your TrueCharts catalog:
-1.  Remove your already old/deprecated TrueCharts catalog: _Apps_ --> _Discover Apps_ --> _Manage Catalogs_ --> _TRUECHARTS_ --> _Delete_ (don't worry, this won't delete any of your already installed applications)
-2.  Add this repository as a new Catalog:
-    +  _Add Catalog_ --> _Continue_
-        - **Catalog Name:** TrueCharts
-        - **Repository:** https://github.com/ZhangTianrong/truecharts
-        - **Preferred Trains:** incubator, premium, stable, system
-        - **Branch:** main
-    + Wait for a considerable amount of time for TrueNAS to verify that all charts in the repo are well-formated.
+Below is a list of all the applications I use on my system, as managed via this TrueCharts catalog. To replicate this setup, ensure you have added this catalog as described above, then install the following apps:
 
-## Apps for which the charts are being maintained:
+### Installed Applications
 
-+ navidrome
-+ komga
-+ nginx-proxy-manager
-+ alist
-+ wg-easy
-+ tachidesk-docker
-+ flood
+- bazarr
+- cert-manager
+- cloudnative-pg
+- clusterissuer
+- flaresolverr
+- home-assistant
+- mosquitto
+- nzbget
+- ollama-api-passthrough
+- ombi
+- open-webui
+- openebs
+- overseerr
+- plex
+- portainer
+- prometheus-operator
+- prowlarr
+- qbittorrent
+- radarr
+- sonarr
+- tautulli
+- traefik
+- truenas-scale-ui
+- uptime-kuma
+- zigbee2mqtt
 
+#### Example Application Statuses
+
+Most of these apps are running and up to date. Some (like `clusterissuer`, `ollama-api-passthrough`, `open-webui`, and `truenas-scale-ui`) may be stopped depending on your needs.
+
+#### How to Install
+
+1. Go to **Apps** in the TrueNAS SCALE UI.
+2. Use the **Discover Apps** or **Manage Catalogs** to ensure this catalog is added.
+3. Search for each app listed above and install it.
+4. Configure each app as needed for your environment.
+
+#### Example App Info (bazarr)
+
+**Name:** bazarr  
+**App Version:** 1.5.3  
+**Chart Version:** 20.2.3  
+**Catalog:** Copyoftruecharts  
+**Train:** stable  
+**Status:** Running, Up to date  
+**Resource Usage:** 166.01 MiB RAM, 0% CPU, 500 b/s - 300 b/s Network  
+**Source:** [ghcr.io/onedr0p/bazarr](https://ghcr.io/onedr0p/bazarr)  
+**Docs:** [TrueCharts Bazarr](https://truecharts.org/charts/stable/bazarr)
+
+Repeat for each app as needed. For more details on each app, see the [TrueCharts documentation](https://truecharts.org).
 ### Charts mainted by the upper-stream fork:
 
 - **premium train:**
