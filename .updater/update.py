@@ -245,19 +245,42 @@ def create_version_dir(app_name:str, app_train:str, old_version:ChartVersion, ne
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Update chart versions from container registry tags")
     parser.add_argument(
+        "--app",
+        action="append",
+        help="Only process specific app name(s). Can be used multiple times.",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Preview changes without writing files or creating commits",
     )
+    parser.add_argument(
+        "--force-bump",
+        action="store_true",
+        help="Create a new chart version even when no remote update is detected",
+    )
     args = parser.parse_args()
+    selected_apps = set(args.app or [])
 
     for app in apps:
         app_name, app_train = app["name"], app["train"]
+        if selected_apps and app_name not in selected_apps:
+            continue
         try:
             need_update, old_version, new_version = check_version(app)
         except Exception as e:
             logger.error("Skipping %s/%s: %s", app_train, app_name, e)
             continue
+        if args.force_bump and not need_update:
+            new_version = ChartVersion(
+                version=increment_version(old_version.version),
+                app_version=old_version.app_version,
+                last_update=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                digest=old_version.digest,
+                tag=old_version.tag,
+            )
+            need_update = True
+            logger.info("Force bump enabled for %s/%s", app_train, app_name)
         if need_update:
             logger.info(f"Updating {app_name} from {old_version.human_version} to {new_version.human_version}")
             if args.dry_run:

@@ -84,14 +84,14 @@ APPS = [
             }
     },
     {
-        "name": "nzbget",
+        "name": "sabnzbd",
         "train": "stable",
             "check_ver": {
                 "type": "dockerhub",
                 "package_owner": "linuxserver",
-                "package_name": "nzbget",
+                "package_name": "sabnzbd",
                 "anchor_tag": "latest",
-                "version_matcher": build_catalog_version_matcher("stable", "nzbget"),
+                "version_matcher": build_catalog_version_matcher("stable", "sabnzbd"),
                 "version_rewriter": "{}",
             }
     },
