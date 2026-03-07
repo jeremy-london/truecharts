@@ -26,42 +26,42 @@ APPS = [
                 "version_rewriter": "{}.0.0",
             }
     },
-    {
-        "name": "cert-manager",
-        "train": "stable",
-            "check_ver": {
-                "type": "dockerhub",
-                "package_owner": "bitnami",
-                "package_name": "cert-manager",
-                "anchor_tag": "latest",
-                "version_matcher": r"\\d+(\\.\\d+)+$",
-                "version_rewriter": "{}.0.0",
-            }
-    },
-    {
-        "name": "cloudnative-pg",
-        "train": "stable",
-            "check_ver": {
-                "type": "dockerhub",
-                "package_owner": "bitnami",
-                "package_name": "cloudnative-pg",
-                "anchor_tag": "latest",
-                "version_matcher": r"\\d+(\\.\\d+)+$",
-                "version_rewriter": "{}.0.0",
-            }
-    },
-    {
-        "name": "clusterissuer",
-        "train": "stable",
-            "check_ver": {
-                "type": "dockerhub",
-                "package_owner": "truecharts",
-                "package_name": "clusterissuer",
-                "anchor_tag": "latest",
-                "version_matcher": r"\\d+(\\.\\d+)+$",
-                "version_rewriter": "{}.0.0",
-            }
-    },
+    # {
+    #     "name": "cert-manager",
+    #     "train": "system",
+    #         "check_ver": {
+    #             "type": "dockerhub",
+    #             "package_owner": "bitnami",
+    #             "package_name": "cert-manager",
+    #             "anchor_tag": "latest",
+    #             "version_matcher": r"\\d+(\\.\\d+)+$",
+    #             "version_rewriter": "{}.0.0",
+    #         }
+    # },
+    # {
+    #     "name": "cloudnative-pg",
+    #     "train": "system",
+    #         "check_ver": {
+    #             "type": "dockerhub",
+    #             "package_owner": "bitnami",
+    #             "package_name": "cloudnative-pg",
+    #             "anchor_tag": "latest",
+    #             "version_matcher": r"\\d+(\\.\\d+)+$",
+    #             "version_rewriter": "{}.0.0",
+    #         }
+    # },
+    # {
+    #     "name": "clusterissuer",
+    #     "train": "stable",
+    #         "check_ver": {
+    #             "type": "dockerhub",
+    #             "package_owner": "truecharts",
+    #             "package_name": "clusterissuer",
+    #             "anchor_tag": "latest",
+    #             "version_matcher": r"\\d+(\\.\\d+)+$",
+    #             "version_rewriter": "{}.0.0",
+    #         }
+    # },
     {
         "name": "flaresolverr",
         "train": "stable",
@@ -122,18 +122,18 @@ APPS = [
                 "version_rewriter": "{}.0.0",
             }
     },
-    {
-        "name": "openebs",
-        "train": "stable",
-            "check_ver": {
-                "type": "dockerhub",
-                "package_owner": "openebs",
-                "package_name": "openebs",
-                "anchor_tag": "latest",
-                "version_matcher": r"\\d+(\\.\\d+)+$",
-                "version_rewriter": "{}.0.0",
-            }
-    },
+    # {
+    #     "name": "openebs",
+    #     "train": "stable",
+    #         "check_ver": {
+    #             "type": "dockerhub",
+    #             "package_owner": "openebs",
+    #             "package_name": "openebs",
+    #             "anchor_tag": "latest",
+    #             "version_matcher": r"\\d+(\\.\\d+)+$",
+    #             "version_rewriter": "{}.0.0",
+    #         }
+    # },
     {
         "name": "overseerr",
         "train": "stable",
@@ -158,18 +158,18 @@ APPS = [
                 "version_rewriter": "{}.0.0",
             }
     },
-    {
-        "name": "prometheus-operator",
-        "train": "stable",
-            "check_ver": {
-                "type": "dockerhub",
-                "package_owner": "bitnami",
-                "package_name": "prometheus-operator",
-                "anchor_tag": "latest",
-                "version_matcher": r"\\d+(\\.\\d+)+$",
-                "version_rewriter": "{}.0.0",
-            }
-    },
+    # {
+    #     "name": "prometheus-operator",
+    #     "train": "stable",
+    #         "check_ver": {
+    #             "type": "dockerhub",
+    #             "package_owner": "bitnami",
+    #             "package_name": "prometheus-operator",
+    #             "anchor_tag": "latest",
+    #             "version_matcher": r"\\d+(\\.\\d+)+$",
+    #             "version_rewriter": "{}.0.0",
+    #         }
+    # },
     {
         "name": "portainer",
         "train": "stable",
