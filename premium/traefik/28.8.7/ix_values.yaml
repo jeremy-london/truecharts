@@ -13,8 +13,8 @@ globalArguments:
 - --global.checknewversion
 image:
   pullPolicy: IfNotPresent
-  repository: public.ecr.aws/docker/library/traefik
-  tag: 3.6.10
+  repository: traefik
+  tag: "v3.6.10"
 ingress:
   main:
     integrations:

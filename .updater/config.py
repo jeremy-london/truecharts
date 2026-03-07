@@ -204,6 +204,8 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("premium", "traefik"),
                 "version_rewriter": "{}",
+                "tag_prefix": "v",
+                "use_digest": False,
             }
     },
     {
