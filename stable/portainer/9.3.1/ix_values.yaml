@@ -1,44 +1,40 @@
-image:
-  repository: portainer/portainer-ce
-  tag: 2.20.3@sha256:f5277f6cab33b3471148fb00dc4b4a09995ba64b473448a58f616d202686564b
-  pullPolicy: IfNotPresent
 beImage:
+  pullPolicy: IfNotPresent
   repository: portainer/portainer-ee
   tag: 2.20.3@sha256:afadde3ae572f2346d0e04965171f6f1d2f1d06023796053c327e183c75d6cc6
+image:
   pullPolicy: IfNotPresent
-portainer:
-  # Logo URL
-  logo: ""
-  # Enables Edge Compute Features
-  edge_compute: false
-  # Sets Snapshot interval
-  snapshot_interval: 5m
-  hide_labels:
-  # - label1=value1
-  # - label2=value2
-serviceAccount:
-  main:
+  repository: docker.io/portainer/portainer-ce
+  tag: 2.39.0@sha256:3267f1869e0fa87b843c55f7fd848f9e3001367d053505f4cb8c664e4a997996
+persistence:
+  cache:
     enabled: true
-    primary: true
+    mountPath: /.cache
+    type: emptyDir
+  data:
+    enabled: true
+    mountPath: /data
+portainer:
+  edge_compute: false
+  hide_labels: null
+  logo: ''
+  snapshot_interval: 5m
+portal:
+  open:
+    enabled: true
 rbac:
   main:
+    clusterWide: true
     enabled: true
     primary: true
-    clusterWide: true
     rules:
-      - apiGroups:
-          - "*"
-        resources:
-          - "*"
-        verbs:
-          - "*"
+    - apiGroups:
+      - '*'
+      resources:
+      - '*'
+      verbs:
+      - '*'
 service:
-  main:
-    ports:
-      main:
-        port: 10400
-        protocol: https
-        targetPort: 9443
   edge:
     enabled: true
     ports:
@@ -46,17 +42,17 @@ service:
         enabled: true
         port: 10401
         targetPort: 10401
-persistence:
-  data:
+  main:
+    ports:
+      main:
+        port: 10400
+        protocol: https
+        targetPort: 9443
+serviceAccount:
+  main:
     enabled: true
-    mountPath: "/data"
-  cache:
-    enabled: true
-    mountPath: "/.cache"
-    type: emptyDir
-portal:
-  open:
-    enabled: true
+    primary: true
+updated: true
 workload:
   main:
     podSpec:
@@ -74,4 +70,3 @@ workload:
             startup:
               port: 9443
               type: https
-updated: true
