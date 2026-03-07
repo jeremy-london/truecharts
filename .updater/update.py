@@ -51,22 +51,35 @@ def increment_version(version):
 
 def parse_version(tags, matcher:str = None, rewriter:str = None):
     """ Check if one of the tags matches the version pattern and rewrite it to the accepted format """
-    for tag in tags:
-        if matcher and (match:=re.search(matcher, tag)):
-            raw_version = match[0]
-            if rewriter:
-                return tag, rewriter.format(raw_version)
-            return tag, raw_version
+    def format_version(raw_version: str) -> str:
+        if rewriter:
+            return rewriter.format(raw_version)
+        return raw_version
 
-    # Fallback: extract a numeric dotted version from available tags.
-    for tag in tags:
-        if match := re.search(r"\d+(?:\.\d+)*", tag):
-            raw_version = match[0]
-            if rewriter:
-                return tag, rewriter.format(raw_version)
-            return tag, raw_version
+    def candidate_key(candidate):
+        # Prefer more specific versions, then longer numeric strings.
+        raw_version = candidate[1]
+        return (raw_version.count("."), len(raw_version))
 
-    return tags[0], rewriter.format("") if rewriter else "unknown"
+    candidates = []
+    if matcher:
+        for tag in tags:
+            if match := re.search(matcher, tag):
+                candidates.append((tag, match[0]))
+    if candidates:
+        tag, raw_version = max(candidates, key=candidate_key)
+        return tag, format_version(raw_version)
+
+    # Fallback: extract dotted numeric versions and choose the most specific one.
+    fallback = []
+    for tag in tags:
+        if match := re.search(r"\d+\.\d+(?:\.\d+)*", tag):
+            fallback.append((tag, match[0]))
+    if fallback:
+        tag, raw_version = max(fallback, key=candidate_key)
+        return tag, format_version(raw_version)
+
+    return tags[0], "unknown"
 
 def check_version(app):
     app_name, app_train = app["name"], app["train"]
@@ -89,6 +102,11 @@ def check_version(app):
     )
     remote_tags, remote_digest = remote_image_version.tags, remote_image_version.digest
     remote_tag, remote_app_version = parse_version(remote_tags, app["check_ver"].get("version_matcher", None), app["check_ver"].get("version_rewriter", None))
+    if remote_app_version in {"", "unknown"} or not re.search(r"\d", remote_app_version) or remote_app_version.startswith("."):
+        raise ValueError(
+            f"Could not derive a valid app_version for {app_train}/{app_name} "
+            f"from tags={remote_tags} using matcher={app['check_ver'].get('version_matcher')!r}"
+        )
     remote_version = ChartVersion(
         version=increment_version(local_version.version),
         app_version=remote_app_version,
@@ -168,7 +186,11 @@ if __name__ == "__main__":
 
     for app in apps:
         app_name, app_train = app["name"], app["train"]
-        need_update, old_version, new_version = check_version(app)
+        try:
+            need_update, old_version, new_version = check_version(app)
+        except Exception as e:
+            logger.error("Skipping %s/%s: %s", app_train, app_name, e)
+            continue
         if need_update:
             logger.info(f"Updating {app_name} from {old_version.human_version} to {new_version.human_version}")
             if args.dry_run:
