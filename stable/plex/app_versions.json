@@ -4,7 +4,7 @@
         "supported": true,
         "healthy_error": null,
         "location": "/home/runner/_work/catalog/catalog/stable/plex/18.3.8",
-        "last_update": "2026-03-06 17:39:14",
+        "last_update": "2026-03-06 17:53:12",
         "required_features": [
             "definitions/timezone",
             "definitions/interface",
