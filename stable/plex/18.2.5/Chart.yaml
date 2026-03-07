@@ -1,0 +1,34 @@
+annotations:
+  truecharts.org/category: media
+  truecharts.org/max_helm_version: '3.14'
+  truecharts.org/min_helm_version: '3.11'
+  truecharts.org/train: stable
+apiVersion: v2
+appVersion: .0.0
+dependencies:
+- alias: ''
+  condition: ''
+  import-values: []
+  name: common
+  repository: oci://tccr.io/truecharts
+  tags: []
+  version: 23.0.10
+deprecated: false
+description: Plex Media Server
+home: https://truecharts.org/charts/stable/plex
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/plex.webp
+keywords:
+- plex
+- plex-media-server
+kubeVersion: '>=1.24.0-0'
+maintainers:
+- email: info@truecharts.org
+  name: TrueCharts
+  url: https://truecharts.org
+name: plex
+sources:
+- https://ghcr.io/onedr0p/plex
+- https://github.com/k8s-at-home/container-images/pkgs/container/plex
+- https://github.com/truecharts/charts/tree/master/charts/stable/plex
+type: application
+version: 18.2.5
