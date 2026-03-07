@@ -272,11 +272,12 @@ if __name__ == "__main__":
             logger.error("Skipping %s/%s: %s", app_train, app_name, e)
             continue
         if args.force_bump and not need_update:
+            use_digest = app["check_ver"].get("use_digest", True)
             new_version = ChartVersion(
                 version=increment_version(old_version.version),
                 app_version=old_version.app_version,
                 last_update=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                digest=old_version.digest,
+                digest=old_version.digest if use_digest else None,
                 tag=old_version.tag,
             )
             need_update = True

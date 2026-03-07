@@ -93,6 +93,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "sabnzbd"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
@@ -105,6 +106,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "ombi"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
@@ -218,6 +220,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "uptime-kuma"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
