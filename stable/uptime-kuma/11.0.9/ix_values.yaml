@@ -1,0 +1,39 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: louislam/uptime-kuma
+  tag: 1@sha256:3d632903e6af34139a37f18055c4f1bfd9b7205ae1138f1e5e8940ddc1d176f9
+metrics:
+  main:
+    enabled: true
+    endpoints:
+    - path: /metrics
+      port: main
+    prometheusRule:
+      enabled: false
+    type: servicemonitor
+persistence:
+  config:
+    enabled: true
+    mountPath: /app/data
+portal:
+  open:
+    enabled: true
+security:
+  PUID: 0
+securityContext:
+  container:
+    runAsGroup: 0
+    runAsNonRoot: false
+    runAsUser: 0
+service:
+  main:
+    ports:
+      main:
+        port: 3001
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            UPTIME_KUMA_PORT: '{{ .Values.service.main.ports.main.port }}'
