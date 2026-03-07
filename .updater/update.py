@@ -146,12 +146,6 @@ if __name__ == "__main__":
         app_name, app_train = app["name"], app["train"]
         need_update, old_version, new_version = check_version(app)
         if need_update:
-            # Check for uncommitted changes
-            result = subprocess.run(['git', '-C', str(CHARTS_DIR), 'status', '--porcelain'], 
-                                capture_output=True, text=True)
-            if result.stdout.strip():
-                logger.error(f"Uncommitted changes detected in {CHARTS_DIR}. Aborting update.")
-                sys.exit(1)
             logger.info(f"Updating {app_name} from {old_version.human_version} to {new_version.human_version}")
             update_catalog(app_name, app_train, old_version, new_version)
             update_app_version_json(app_name, app_train, old_version, new_version)

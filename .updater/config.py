@@ -2,19 +2,6 @@ import pathlib
 
 APPS = [
     {
-        "name": "qbittorrent",
-        "train": "stable",
-        "check_ver": {
-            "type": "ghcr",
-            "package_owner": "onedr0p",
-            "package_name": "qbittorrent",
-            "anchor_tag": "rolling",
-            "version_matcher": r"\d+\.\d+\.\d+"
-        }
-    },
-
-    # --- Added from README.md ---
-    {
         "name": "bazarr",
         "train": "stable",
             "check_ver": {
@@ -26,42 +13,6 @@ APPS = [
                 "version_rewriter": "{}.0.0",
             }
     },
-    # {
-    #     "name": "cert-manager",
-    #     "train": "system",
-    #         "check_ver": {
-    #             "type": "dockerhub",
-    #             "package_owner": "bitnami",
-    #             "package_name": "cert-manager",
-    #             "anchor_tag": "latest",
-    #             "version_matcher": r"\\d+(\\.\\d+)+$",
-    #             "version_rewriter": "{}.0.0",
-    #         }
-    # },
-    # {
-    #     "name": "cloudnative-pg",
-    #     "train": "system",
-    #         "check_ver": {
-    #             "type": "dockerhub",
-    #             "package_owner": "bitnami",
-    #             "package_name": "cloudnative-pg",
-    #             "anchor_tag": "latest",
-    #             "version_matcher": r"\\d+(\\.\\d+)+$",
-    #             "version_rewriter": "{}.0.0",
-    #         }
-    # },
-    # {
-    #     "name": "clusterissuer",
-    #     "train": "stable",
-    #         "check_ver": {
-    #             "type": "dockerhub",
-    #             "package_owner": "truecharts",
-    #             "package_name": "clusterissuer",
-    #             "anchor_tag": "latest",
-    #             "version_matcher": r"\\d+(\\.\\d+)+$",
-    #             "version_rewriter": "{}.0.0",
-    #         }
-    # },
     {
         "name": "flaresolverr",
         "train": "stable",
@@ -91,8 +42,8 @@ APPS = [
         "train": "stable",
             "check_ver": {
                 "type": "dockerhub",
-                "package_owner": "eclipse",
-                "package_name": "mosquitto",
+                "package_owner": "library",
+                "package_name": "eclipse-mosquitto",
                 "anchor_tag": "latest",
                 "version_matcher": r"\\d+(\\.\\d+)+$",
                 "version_rewriter": "{}.0.0",
@@ -122,18 +73,6 @@ APPS = [
                 "version_rewriter": "{}.0.0",
             }
     },
-    # {
-    #     "name": "openebs",
-    #     "train": "stable",
-    #         "check_ver": {
-    #             "type": "dockerhub",
-    #             "package_owner": "openebs",
-    #             "package_name": "openebs",
-    #             "anchor_tag": "latest",
-    #             "version_matcher": r"\\d+(\\.\\d+)+$",
-    #             "version_rewriter": "{}.0.0",
-    #         }
-    # },
     {
         "name": "overseerr",
         "train": "stable",
@@ -151,25 +90,13 @@ APPS = [
         "train": "stable",
             "check_ver": {
                 "type": "dockerhub",
-                "package_owner": "plexinc",
-                "package_name": "plex-media-server",
+                "package_owner": "linuxserver",
+                "package_name": "plex",
                 "anchor_tag": "latest",
                 "version_matcher": r"\\d+(\\.\\d+)+$",
                 "version_rewriter": "{}.0.0",
             }
     },
-    # {
-    #     "name": "prometheus-operator",
-    #     "train": "stable",
-    #         "check_ver": {
-    #             "type": "dockerhub",
-    #             "package_owner": "bitnami",
-    #             "package_name": "prometheus-operator",
-    #             "anchor_tag": "latest",
-    #             "version_matcher": r"\\d+(\\.\\d+)+$",
-    #             "version_rewriter": "{}.0.0",
-    #         }
-    # },
     {
         "name": "portainer",
         "train": "stable",
@@ -244,10 +171,10 @@ APPS = [
     },
     {
         "name": "traefik",
-        "train": "stable",
+        "train": "premium",
             "check_ver": {
                 "type": "dockerhub",
-                "package_owner": "traefik",
+                "package_owner": "library",
                 "package_name": "traefik",
                 "anchor_tag": "latest",
                 "version_matcher": r"\\d+(\\.\\d+)+$",
