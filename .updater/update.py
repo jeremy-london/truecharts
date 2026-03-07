@@ -102,6 +102,9 @@ def check_version(app):
     )
     remote_tags, remote_digest = remote_image_version.tags, remote_image_version.digest
     remote_tag, remote_app_version = parse_version(remote_tags, app["check_ver"].get("version_matcher", None), app["check_ver"].get("version_rewriter", None))
+    tag_prefix = app["check_ver"].get("tag_prefix")
+    if tag_prefix and not remote_tag.startswith(tag_prefix):
+        remote_tag = f"{tag_prefix}{remote_tag}"
     if remote_app_version in {"", "unknown"} or not re.search(r"\d", remote_app_version) or remote_app_version.startswith("."):
         raise ValueError(
             f"Could not derive a valid app_version for {app_train}/{app_name} "
@@ -159,10 +162,7 @@ def create_version_dir(app_name:str, app_train:str, old_version:ChartVersion, ne
     logger.info(f"Version directary initialized with files from {old_dir}")
     with open(CHARTS_DIR/new_dir/"ix_values.yaml", "r") as f:
         ix_values = yaml.safe_load(f)
-    if new_version.digest:
-        ix_values["image"]["tag"] = f"{new_version.tag}@{new_version.digest}"
-    else:
-        ix_values["image"]["tag"] = new_version.tag
+    ix_values["image"]["tag"] = new_version.tag
     with open(CHARTS_DIR/new_dir/"Chart.yaml", "r") as f:
         chart = yaml.safe_load(f)
     chart["version"] = new_version.version
@@ -195,10 +195,10 @@ if __name__ == "__main__":
             logger.info(f"Updating {app_name} from {old_version.human_version} to {new_version.human_version}")
             if args.dry_run:
                 logger.info(
-                    "Dry run: would update %s/%s, set tag to %s, and refresh catalog/app_versions/new chart directory",
+                    "Dry run: would update %s/%s, set tag to %s (digest ignored), and refresh catalog/app_versions/new chart directory",
                     app_train,
                     app_name,
-                    f"{new_version.tag}@{new_version.digest}" if new_version.digest else new_version.tag,
+                    new_version.tag,
                 )
                 continue
             update_catalog(app_name, app_train, old_version, new_version)

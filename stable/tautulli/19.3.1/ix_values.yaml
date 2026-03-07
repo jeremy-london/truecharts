@@ -1,7 +1,7 @@
 image:
   pullPolicy: IfNotPresent
   repository: ghcr.io/tautulli/tautulli
-  tag: 2.16.1@sha256:c75d3410b958399f86b6d1786f7640e91b867b24d154b3f09f9bb3207f2e8b35
+  tag: v2.16.1
 persistence:
   config:
     enabled: true

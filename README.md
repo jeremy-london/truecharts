@@ -189,7 +189,7 @@ It honestly replicates the follwoing steps used by the upper-stream fork:
    	image:
    	repository: jorenn92/maintainerr
    	pullPolicy: IfNotPresent
-   	tag: 2.0.3@sha256:712e990afff98767a880284eb914fd5f2f5d76c5e8838c3f003fecdeb045b912
+   	tag: 2.0.3
    ```
    With some exceptions I always use the images which TrueCharts uses. I copy them from the TrueCharts repository:
    https://github.com/truecharts/charts/blob/master/charts/stable/maintainerr/values.yaml

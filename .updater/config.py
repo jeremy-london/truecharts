@@ -201,6 +201,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "tautulli"),
                 "version_rewriter": "{}",
+                "tag_prefix": "v",
             }
     },
     {

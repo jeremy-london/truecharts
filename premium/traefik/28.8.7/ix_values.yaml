@@ -14,7 +14,7 @@ globalArguments:
 image:
   pullPolicy: IfNotPresent
   repository: public.ecr.aws/docker/library/traefik
-  tag: 3.6@sha256:c549d482c55d7a797398562064f35428cc53e748d84d7190997930e7b31bcc32
+  tag: 3.6
 ingress:
   main:
     integrations:

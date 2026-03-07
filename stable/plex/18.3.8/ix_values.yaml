@@ -1,7 +1,7 @@
 image:
   pullPolicy: IfNotPresent
   repository: ghcr.io/home-operations/plex
-  tag: 1.43.0@sha256:79dfc89947410ec120a3e34cf68f746f6f154de20772e6f27b9998ca9bd65a5e
+  tag: 1.43.0
 persistence:
   config:
     enabled: true

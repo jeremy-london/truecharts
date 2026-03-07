@@ -1,7 +1,7 @@
 image:
   pullPolicy: IfNotPresent
   repository: oci.trueforge.org/containerforge/qbittorrent
-  tag: 5.1.4@sha256:3ee43a4d08ce4a0108e4c8150f570544a8c4a4a11e2ca95b86d46006547f80d5
+  tag: 5.1.4
 persistence:
   config:
     enabled: true
@@ -13,7 +13,7 @@ qbitportforward:
 qbitportforwardImage:
   pullPolicy: IfNotPresent
   repository: docker.io/mjmeli/qbittorrent-port-forward-gluetun-server
-  tag: latest@sha256:4bd94ad0d289d3d52facdcb708a019e693c8df41e386f6aee80b870fa90baeec
+  tag: latest
 securityContext:
   container:
     readOnlyRootFilesystem: false
@@ -58,7 +58,7 @@ workload:
           command: /usr/src/app/main.sh
           enabled: true
           env:
-            GTN_ADDR: '{{ printf "http://%v-gluetun:8000" (include "tc.v1.common.lib.chart.names.fullname"
+            GTN_ADDR: '{{ printf "http://%v-gluetun" (include "tc.v1.common.lib.chart.names.fullname"
               $) }}'
             QBT_ADDR: '{{ printf "http://%v:%v" (include "tc.v1.common.lib.chart.names.fullname"
               $) .Values.service.main.ports.main.port }}'

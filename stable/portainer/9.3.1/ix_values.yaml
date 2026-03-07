@@ -1,11 +1,11 @@
 beImage:
   pullPolicy: IfNotPresent
   repository: portainer/portainer-ee
-  tag: 2.20.3@sha256:afadde3ae572f2346d0e04965171f6f1d2f1d06023796053c327e183c75d6cc6
+  tag: 2.20.3
 image:
   pullPolicy: IfNotPresent
   repository: docker.io/portainer/portainer-ce
-  tag: 2.39.0@sha256:3267f1869e0fa87b843c55f7fd848f9e3001367d053505f4cb8c664e4a997996
+  tag: 2.39.0
 persistence:
   cache:
     enabled: true

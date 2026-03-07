@@ -1,11 +1,11 @@
 exportarrImage:
   pullPolicy: IfNotPresent
   repository: ghcr.io/onedr0p/exportarr
-  tag: v2.0.1@sha256:727e7bc8f2f0934a2117978c59f4476b954018b849a010ea6cfb380bd6539644
+  tag: v2.0.1
 image:
   pullPolicy: IfNotPresent
   repository: ghcr.io/home-operations/bazarr
-  tag: 1.5.6@sha256:94eee5e3e14430b7b144d4556be73963a7daf6f1bddc25586627f426465482ce
+  tag: 1.5.6
 metrics:
   main:
     apiKey: ''

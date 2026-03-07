@@ -1,7 +1,7 @@
 image:
   pullPolicy: IfNotPresent
   repository: oci.trueforge.org/containerforge/nzbget
-  tag: 26.0.20260306@sha256:ec3ef0ae7dc410084086a7fdd447deda4747531154aa1cc5c7c48ac60794e277
+  tag: 26.0.20260306
 persistence:
   config:
     enabled: true
