@@ -1,0 +1,27 @@
+cloudnative-pg:
+  monitoring:
+    grafanaDashboard:
+      configMapName: cnpg-grafana-dashboard
+      create: true
+      namespace: ''
+      sidecarLabel: grafana_dashboard
+      sidecarLabelValue: '1'
+    podMonitorEnabled: true
+image:
+  pullPolicy: IfNotPresent
+  repository: tccr.io/tccr/alpine
+  tag: 1@sha256:002eb038fe118f3e2d6c23d877d013a6aa75e6b0d9886d140bb51059dbea7a22
+operator:
+  register: true
+portal:
+  open:
+    enabled: false
+service:
+  main:
+    enabled: false
+    ports:
+      main:
+        enabled: false
+workload:
+  main:
+    enabled: false
