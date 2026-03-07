@@ -61,6 +61,11 @@ def increment_version(version):
     patch = str(int(patch) + 1)
     return ".".join([major, minor, patch])
 
+def numeric_version_tuple(version: str):
+    if re.fullmatch(r"\d+(?:\.\d+)*", version):
+        return tuple(int(p) for p in version.split("."))
+    return None
+
 def parse_version(tags, matcher:str = None, rewriter:str = None):
     """ Check if one of the tags matches the version pattern and rewrite it to the accepted format """
     def format_version(raw_version: str) -> str:
@@ -115,6 +120,9 @@ def check_version(app):
     )
     remote_tags, remote_digest = remote_image_version.tags, remote_image_version.digest
     remote_tag, remote_app_version = parse_version(remote_tags, app["check_ver"].get("version_matcher", None), app["check_ver"].get("version_rewriter", None))
+    tag_strip_prefix = app["check_ver"].get("tag_strip_prefix")
+    if tag_strip_prefix and remote_tag.startswith(tag_strip_prefix):
+        remote_tag = remote_tag[len(tag_strip_prefix):]
     tag_prefix = app["check_ver"].get("tag_prefix")
     if tag_prefix and not remote_tag.startswith(tag_prefix):
         remote_tag = f"{tag_prefix}{remote_tag}"
@@ -159,6 +167,18 @@ def check_version(app):
         needs_update = validated_digest != local_version.digest or remote_tag != local_version.tag
     else:
         needs_update = remote_tag != local_version.tag or remote_app_version != local_version.app_version
+
+    local_num = numeric_version_tuple(local_version.app_version)
+    remote_num = numeric_version_tuple(remote_app_version)
+    if local_num and remote_num and remote_num < local_num:
+        logger.warning(
+            "Skipping downgrade for %s/%s: local app_version=%s, remote app_version=%s",
+            app_train,
+            app_name,
+            local_version.app_version,
+            remote_app_version,
+        )
+        needs_update = False
 
     return needs_update, local_version, remote_version  
 
