@@ -44,7 +44,7 @@ configmap:
 image:
   pullPolicy: IfNotPresent
   repository: eclipse-mosquitto
-  tag: 2
+  tag: "2"
 ingress:
   websockets:
     enabled: false

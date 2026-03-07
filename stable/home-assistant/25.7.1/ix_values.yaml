@@ -50,7 +50,7 @@ homeassistant:
 image:
   pullPolicy: IfNotPresent
   repository: docker.io/homeassistant/home-assistant
-  tag: 2026.3
+  tag: "2026.3"
 persistence:
   config:
     enabled: true

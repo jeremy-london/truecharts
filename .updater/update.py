@@ -27,6 +27,18 @@ checkers = {
     "dockerhub": DockerHubChecker()
 }
 
+
+class QuotedString(str):
+    """String type that forces quoted YAML emission."""
+
+
+def _quoted_str_representer(dumper, data):
+    return dumper.represent_scalar("tag:yaml.org,2002:str", data, style='"')
+
+
+yaml.add_representer(QuotedString, _quoted_str_representer)
+
+
 @dataclass
 class ChartVersion:
     """Represents version information for a Helm chart"""
@@ -90,14 +102,15 @@ def check_version(app):
         last_update=catalog[app_train][app_name]["last_update"]
     )
     with open(CHARTS_DIR/f"{app_train}/{app_name}/{local_version.version}/ix_values.yaml", "r") as f:
-        stored_tag = yaml.safe_load(f)["image"]["tag"]
+        stored_tag = str(yaml.safe_load(f)["image"]["tag"])
     tag_parts = stored_tag.split("@", maxsplit=1)
     local_version.tag = tag_parts[0]
     local_version.digest = tag_parts[1] if len(tag_parts) > 1 else None
     
     checker = checkers[app["check_ver"]["type"]]
+    image_ref = f"{app['check_ver']['package_owner']}/{app['check_ver']['package_name']}"
     remote_image_version = checker.get_latest_version(
-        image=f"{app['check_ver']['package_owner']}/{app['check_ver']['package_name']}",
+        image=image_ref,
         label=app['check_ver'].get("anchor_tag", None)
     )
     remote_tags, remote_digest = remote_image_version.tags, remote_image_version.digest
@@ -105,6 +118,30 @@ def check_version(app):
     tag_prefix = app["check_ver"].get("tag_prefix")
     if tag_prefix and not remote_tag.startswith(tag_prefix):
         remote_tag = f"{tag_prefix}{remote_tag}"
+    use_digest = app["check_ver"].get("use_digest", True)
+    validated_digest = None
+    if use_digest and remote_digest:
+        try:
+            tag_image_version = checker.get_latest_version(image=image_ref, label=remote_tag)
+            if tag_image_version.digest == remote_digest:
+                validated_digest = remote_digest
+            else:
+                logger.warning(
+                    "Digest mismatch for %s/%s tag %s: expected %s got %s. Falling back to tag-only update.",
+                    app_train,
+                    app_name,
+                    remote_tag,
+                    remote_digest,
+                    tag_image_version.digest,
+                )
+        except Exception as e:
+            logger.warning(
+                "Unable to validate digest for %s/%s tag %s (%s). Falling back to tag-only update.",
+                app_train,
+                app_name,
+                remote_tag,
+                e,
+            )
     if remote_app_version in {"", "unknown"} or not re.search(r"\d", remote_app_version) or remote_app_version.startswith("."):
         raise ValueError(
             f"Could not derive a valid app_version for {app_train}/{app_name} "
@@ -114,11 +151,16 @@ def check_version(app):
         version=increment_version(local_version.version),
         app_version=remote_app_version,
         last_update=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-        digest=remote_digest,
+        digest=validated_digest,
         tag=remote_tag
     )
-    
-    return remote_digest != local_version.digest, local_version, remote_version  
+
+    if validated_digest:
+        needs_update = validated_digest != local_version.digest or remote_tag != local_version.tag
+    else:
+        needs_update = remote_tag != local_version.tag or remote_app_version != local_version.app_version
+
+    return needs_update, local_version, remote_version  
 
 def update_catalog(app_name:str, app_train:str, old_version:ChartVersion, new_version:ChartVersion):
     logger.info(f"Updating catalog.json for {app_train}/{app_name}")
@@ -162,7 +204,12 @@ def create_version_dir(app_name:str, app_train:str, old_version:ChartVersion, ne
     logger.info(f"Version directary initialized with files from {old_dir}")
     with open(CHARTS_DIR/new_dir/"ix_values.yaml", "r") as f:
         ix_values = yaml.safe_load(f)
-    ix_values["image"]["tag"] = new_version.tag
+    image_tag = f"{new_version.tag}@{new_version.digest}" if new_version.digest else new_version.tag
+    # Keep numeric-like tags quoted so downstream parsers don't coerce to float.
+    if re.fullmatch(r"\d+(?:\.\d+)*", image_tag):
+        ix_values["image"]["tag"] = QuotedString(image_tag)
+    else:
+        ix_values["image"]["tag"] = image_tag
     with open(CHARTS_DIR/new_dir/"Chart.yaml", "r") as f:
         chart = yaml.safe_load(f)
     chart["version"] = new_version.version
@@ -195,10 +242,10 @@ if __name__ == "__main__":
             logger.info(f"Updating {app_name} from {old_version.human_version} to {new_version.human_version}")
             if args.dry_run:
                 logger.info(
-                    "Dry run: would update %s/%s, set tag to %s (digest ignored), and refresh catalog/app_versions/new chart directory",
+                    "Dry run: would update %s/%s, set tag to %s, and refresh catalog/app_versions/new chart directory",
                     app_train,
                     app_name,
-                    new_version.tag,
+                    f"{new_version.tag}@{new_version.digest}" if new_version.digest else new_version.tag,
                 )
                 continue
             update_catalog(app_name, app_train, old_version, new_version)
