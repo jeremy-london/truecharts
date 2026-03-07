@@ -1,0 +1,51 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: ghcr.io/home-operations/plex
+  tag: 1.43.0@sha256:79dfc89947410ec120a3e34cf68f746f6f154de20772e6f27b9998ca9bd65a5e
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+  transcode:
+    enabled: true
+    medium: Memory
+    mountPath: /transcode
+    targetSelectAll: true
+    type: emptyDir
+plex:
+  additionalAdvertiseURL: ''
+  disableGDM: true
+  requireHTTPS: false
+  serverIP: 127.0.0.1
+portal:
+  open:
+    enabled: true
+service:
+  main:
+    ports:
+      main:
+        port: 32400
+        protocol: http
+        targetPort: 32400
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            ALLOWED_NETWORKS: 172.16.0.0/12,10.0.0.0/8,192.168.0.0/16
+            PLEX_CLAIM: ''
+            PLEX_PREFERENCE_GDM: GdmEnabled={{ ternary "0" "1" .Values.plex.disableGDM
+              }}
+            PLEX_PREFERENCE_SEC_CON: secureConnections={{ ternary "0" "1" .Values.plex.requireHTTPS
+              }}
+          probes:
+            liveness:
+              enabled: true
+              path: /identity
+            readiness:
+              enabled: true
+              path: /identity
+            startup:
+              enabled: true
+              path: /identity
