@@ -1,0 +1,37 @@
+image:
+  repository: "docker.io/traggo/server"
+  pullPolicy: "IfNotPresent"
+  tag: "0.8.1@sha256:df82490bea6a3ac89bb8d8fb4e7a7755348967d804eda6f1fdb4590b46bdc72a"
+traggo:
+  username: admin
+  password: admin
+  pass_strength: 10
+  log_level: info
+service:
+  main:
+    ports:
+      main:
+        protocol: http
+        port: 12117
+persistence:
+  config:
+    enabled: true
+    mountPath: /opt/traggo/data
+portal:
+  open:
+    enabled: true
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          probes:
+            liveness:
+              type: http
+            readiness:
+              type: http
+            startup:
+              type: http
+          envFrom:
+          - secretRef:
+              name: "secret"

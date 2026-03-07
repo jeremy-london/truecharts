@@ -1,25 +1,25 @@
 annotations:
   truecharts.org/category: operators
-  truecharts.org/max_helm_version: '3.14'
-  truecharts.org/min_helm_version: '3.11'
+  truecharts.org/max_helm_version: "3.14"
+  truecharts.org/min_helm_version: "3.11"
   truecharts.org/train: system
 apiVersion: v2
-appVersion: .0.0
+appVersion: latest
 dependencies:
-- alias: ''
-  condition: ''
-  import-values: []
-  name: common
+- name: common
+  version: 23.0.11
   repository: oci://tccr.io/truecharts
+  condition: ""
+  alias: ""
   tags: []
-  version: 23.0.0
-- alias: cloudnative-pg
-  condition: ''
   import-values: []
-  name: cloudnative-pg
-  repository: https://cloudnative-pg.github.io/charts
-  tags: []
+- name: cloudnative-pg
   version: 0.20.2
+  repository: https://cloudnative-pg.github.io/charts
+  condition: ""
+  alias: cloudnative-pg
+  tags: []
+  import-values: []
 deprecated: false
 description: CloudNativePG is a clustered postgresql database operator
 home: https://truecharts.org/charts/system/cloudnative-pg
@@ -30,8 +30,8 @@ keywords:
 - cnpg
 kubeVersion: '>=1.24.0-0'
 maintainers:
-- email: info@truecharts.org
-  name: TrueCharts
+- name: TrueCharts
+  email: info@truecharts.org
   url: https://truecharts.org
 name: cloudnative-pg
 sources:

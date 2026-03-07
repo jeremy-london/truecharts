@@ -1,18 +1,18 @@
 {
-    "2.1.8": {
+    "2.4.8": {
         "healthy": true,
         "supported": true,
         "healthy_error": null,
-        "location": "/home/runner/_work/catalog/catalog/stable/speedtest-tracker/2.1.8",
-        "last_update": "2024-05-29 12:35:14",
+        "location": "/home/runner/_work/catalog/catalog/stable/speedtest-tracker/2.4.8",
+        "last_update": "2026-01-09 17:45:35",
         "required_features": [
             "definitions/timezone",
             "normalize/interfaceConfiguration",
             "definitions/certificate",
             "definitions/interface"
         ],
-        "human_version": "0.19.0_2.1.8",
-        "version": "2.1.8",
+        "human_version": "1.13.4_2.4.8",
+        "version": "2.4.8",
         "chart_metadata": {
             "annotations": {
                 "truecharts.org/category": "metrics",
@@ -21,7 +21,7 @@
                 "truecharts.org/train": "stable"
             },
             "apiVersion": "v2",
-            "appVersion": "0.19.0",
+            "appVersion": "1.13.4",
             "dependencies": [
                 {
                     "name": "common",
@@ -66,7 +66,7 @@
                 "https://github.com/truecharts/charts/tree/master/charts/stable/speedtest-tracker"
             ],
             "type": "application",
-            "version": "2.1.8"
+            "version": "2.4.8"
         },
         "app_metadata": null,
         "schema": {
@@ -5759,20 +5759,20 @@
         "detailed_readme": "<hr />\n<h2>title: README</h2>\n<h2>General Info</h2>\n<p>TrueCharts can be installed as both <em>normal</em> Helm Charts or as TrueNAS SCALE Apps.\nBoth solutions are fully supported, but we heavily advice the use of normal Helm Charts where possible</p>\n<p>For more information about this Chart, please check the docs on the TrueCharts <a href=\"https://truecharts.org/charts/stable/speedtest-tracker\">website</a></p>\n<p><strong>This chart is not maintained by the upstream project and any issues with the chart should be raised <a href=\"https://github.com/truecharts/charts/issues/new/choose\">here</a></strong></p>\n<h2>Installation</h2>\n<h3>Helm-Chart installation</h3>\n<p>To install TrueCharts Helm charts using Helm, you can use our OCI Repository.</p>\n<p><code>helm install mychart oci://tccr.io/truecharts/CHARTNAME</code></p>\n<p>For more information on how to install TrueCharts Helm charts, checkout the instructions on the website: https://truecharts.org/helm/</p>\n<h3>TrueNAS SCALE Apps</h3>\n<p>For more information on how to use TrueCharts as TrueNAS SCALE Apps, please checkout the <a href=\"https://truecharts.org/scale\">quick-start guides for TrueNAS SCALE</a>.</p>\n<h2>Chart Specific Guides and information</h2>\n<p>All our charts have dedicated documentation pages.\nThe documentation for this chart can be found here:\nhttps://truecharts.org/charts/stable/speedtest-tracker</p>\n<h2>Configuration Options</h2>\n<p>Please note: For TrueNAS SCALE, only options available in the GUI are supported.\nHence most of these docs do not apply to TrueNAS SCALE</p>\n<p>To view the chart specific options, please view Values.yaml included in the chart.\nThe most recent version of which, is available here: https://github.com/truecharts/charts/charts/stable/speedtest-tracker/values.yaml</p>\n<p>All our Charts use a shared \"common\" library chart that contains most of the templating and options.\nFor the complete overview of all available options, please checkout the documentation for them on the website: https://truecharts.org/common/</p>\n<p>For information about the common chart and all defaults included with it, please review its values.yaml file available here: https://github.com/truecharts/library-charts/blob/main/library/common/values.yaml</p>\n<h2>Support</h2>\n<ul>\n<li>See the <a href=\"https://truecharts.org\">Website</a></li>\n<li>Check our <a href=\"https://discord.gg/tVsPTHWTtr\">Discord</a></li>\n<li>Open a <a href=\"https://github.com/truecharts/charts/issues/new/choose\">issue</a></li>\n</ul>\n<hr />\n<h2>Sponsor TrueCharts</h2>\n<p>TrueCharts can only exist due to the incredible effort of our staff.\nPlease consider making a <a href=\"https://truecharts.org/general/sponsor\">donation</a> or contributing back to the project any way you can!</p>\n<p><em>All Rights Reserved - The TrueCharts Project</em></p>",
         "changelog": "<p><em>for the complete changelog, please refer to the website</em></p>\n<p><strong>Important:</strong></p>"
     },
-    "2.1.7": {
+    "2.4.7": {
         "healthy": true,
         "supported": true,
         "healthy_error": null,
-        "location": "/home/runner/_work/catalog/catalog/stable/speedtest-tracker/2.1.7",
-        "last_update": "2024-05-29 12:35:14",
+        "location": "/home/runner/_work/catalog/catalog/stable/speedtest-tracker/2.4.7",
+        "last_update": "2025-12-19 21:08:32",
         "required_features": [
             "definitions/timezone",
             "normalize/interfaceConfiguration",
             "definitions/certificate",
             "definitions/interface"
         ],
-        "human_version": "0.19.0_2.1.7",
-        "version": "2.1.7",
+        "human_version": "1.13.3_2.4.7",
+        "version": "2.4.7",
         "chart_metadata": {
             "annotations": {
                 "truecharts.org/category": "metrics",
@@ -5781,11 +5781,11 @@
                 "truecharts.org/train": "stable"
             },
             "apiVersion": "v2",
-            "appVersion": "0.19.0",
+            "appVersion": "1.13.3",
             "dependencies": [
                 {
                     "name": "common",
-                    "version": "23.0.9",
+                    "version": "23.0.10",
                     "repository": "oci://tccr.io/truecharts",
                     "condition": "",
                     "alias": "",
@@ -5826,7 +5826,7 @@
                 "https://github.com/truecharts/charts/tree/master/charts/stable/speedtest-tracker"
             ],
             "type": "application",
-            "version": "2.1.7"
+            "version": "2.4.7"
         },
         "app_metadata": null,
         "schema": {
@@ -11519,35 +11519,33 @@
         "detailed_readme": "<hr />\n<h2>title: README</h2>\n<h2>General Info</h2>\n<p>TrueCharts can be installed as both <em>normal</em> Helm Charts or as TrueNAS SCALE Apps.\nBoth solutions are fully supported, but we heavily advice the use of normal Helm Charts where possible</p>\n<p>For more information about this Chart, please check the docs on the TrueCharts <a href=\"https://truecharts.org/charts/stable/speedtest-tracker\">website</a></p>\n<p><strong>This chart is not maintained by the upstream project and any issues with the chart should be raised <a href=\"https://github.com/truecharts/charts/issues/new/choose\">here</a></strong></p>\n<h2>Installation</h2>\n<h3>Helm-Chart installation</h3>\n<p>To install TrueCharts Helm charts using Helm, you can use our OCI Repository.</p>\n<p><code>helm install mychart oci://tccr.io/truecharts/CHARTNAME</code></p>\n<p>For more information on how to install TrueCharts Helm charts, checkout the instructions on the website: https://truecharts.org/helm/</p>\n<h3>TrueNAS SCALE Apps</h3>\n<p>For more information on how to use TrueCharts as TrueNAS SCALE Apps, please checkout the <a href=\"https://truecharts.org/scale\">quick-start guides for TrueNAS SCALE</a>.</p>\n<h2>Chart Specific Guides and information</h2>\n<p>All our charts have dedicated documentation pages.\nThe documentation for this chart can be found here:\nhttps://truecharts.org/charts/stable/speedtest-tracker</p>\n<h2>Configuration Options</h2>\n<p>Please note: For TrueNAS SCALE, only options available in the GUI are supported.\nHence most of these docs do not apply to TrueNAS SCALE</p>\n<p>To view the chart specific options, please view Values.yaml included in the chart.\nThe most recent version of which, is available here: https://github.com/truecharts/charts/charts/stable/speedtest-tracker/values.yaml</p>\n<p>All our Charts use a shared \"common\" library chart that contains most of the templating and options.\nFor the complete overview of all available options, please checkout the documentation for them on the website: https://truecharts.org/common/</p>\n<p>For information about the common chart and all defaults included with it, please review its values.yaml file available here: https://github.com/truecharts/library-charts/blob/main/library/common/values.yaml</p>\n<h2>Support</h2>\n<ul>\n<li>See the <a href=\"https://truecharts.org\">Website</a></li>\n<li>Check our <a href=\"https://discord.gg/tVsPTHWTtr\">Discord</a></li>\n<li>Open a <a href=\"https://github.com/truecharts/charts/issues/new/choose\">issue</a></li>\n</ul>\n<hr />\n<h2>Sponsor TrueCharts</h2>\n<p>TrueCharts can only exist due to the incredible effort of our staff.\nPlease consider making a <a href=\"https://truecharts.org/general/sponsor\">donation</a> or contributing back to the project any way you can!</p>\n<p><em>All Rights Reserved - The TrueCharts Project</em></p>",
         "changelog": "<p><em>for the complete changelog, please refer to the website</em></p>\n<p><strong>Important:</strong></p>"
     },
-    "1.11.10": {
+    "2.4.6": {
         "healthy": true,
         "supported": true,
         "healthy_error": null,
-        "location": "/home/runner/_work/catalog/catalog/stable/speedtest-tracker/1.11.10",
-        "last_update": "2024-05-29 12:35:14",
+        "location": "/home/runner/_work/catalog/catalog/stable/speedtest-tracker/2.4.6",
+        "last_update": "2025-12-09 13:49:53",
         "required_features": [
             "definitions/timezone",
             "normalize/interfaceConfiguration",
             "definitions/certificate",
             "definitions/interface"
         ],
-        "human_version": "0.19.0_1.11.10",
-        "version": "1.11.10",
+        "human_version": "1.12.3_2.4.6",
+        "version": "2.4.6",
         "chart_metadata": {
             "annotations": {
-                "max_scale_version": "24.04.0",
-                "min_scale_version": "23.10.0",
                 "truecharts.org/category": "metrics",
                 "truecharts.org/max_helm_version": "3.14",
                 "truecharts.org/min_helm_version": "3.11",
                 "truecharts.org/train": "stable"
             },
             "apiVersion": "v2",
-            "appVersion": "0.19.0",
+            "appVersion": "1.12.3",
             "dependencies": [
                 {
                     "name": "common",
-                    "version": "20.3.12",
+                    "version": "23.0.10",
                     "repository": "oci://tccr.io/truecharts",
                     "condition": "",
                     "alias": "",
@@ -11556,7 +11554,7 @@
                 },
                 {
                     "name": "redis",
-                    "version": "13.3.11",
+                    "version": "14.0.5",
                     "repository": "oci://tccr.io/truecharts",
                     "condition": "redis.enabled",
                     "alias": "",
@@ -11582,13 +11580,13 @@
             ],
             "name": "speedtest-tracker",
             "sources": [
+                "https://ghcr.io/linuxserver/speedtest-tracker",
                 "https://github.com/alexjustesen/speedtest-tracker",
                 "https://github.com/linuxserver/docker-speedtest-tracker",
-                "https://github.com/truecharts/charts/tree/master/charts/stable/speedtest-tracker",
-                "https://ghcr.io/linuxserver/speedtest-tracker"
+                "https://github.com/truecharts/charts/tree/master/charts/stable/speedtest-tracker"
             ],
             "type": "application",
-            "version": "1.11.10"
+            "version": "2.4.6"
         },
         "app_metadata": null,
         "schema": {
@@ -11705,6 +11703,135 @@
                     }
                 },
                 {
+                    "variable": "credentialsList",
+                    "group": "General",
+                    "label": "Credentials (Experimental)",
+                    "schema": {
+                        "type": "list",
+                        "default": [],
+                        "items": [
+                            {
+                                "variable": "credentialsEntry",
+                                "label": "Enter Credentials",
+                                "schema": {
+                                    "additional_attrs": true,
+                                    "type": "dict",
+                                    "attrs": [
+                                        {
+                                            "variable": "name",
+                                            "label": "Name",
+                                            "description": "Name",
+                                            "schema": {
+                                                "type": "string",
+                                                "required": true,
+                                                "default": ""
+                                            }
+                                        },
+                                        {
+                                            "variable": "type",
+                                            "label": "Type",
+                                            "description": "Type of Credential",
+                                            "schema": {
+                                                "type": "string",
+                                                "default": "s3",
+                                                "enum": [
+                                                    {
+                                                        "value": "s3",
+                                                        "description": "s3 Storage"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "variable": "url",
+                                            "label": "url",
+                                            "schema": {
+                                                "type": "string",
+                                                "default": "",
+                                                "required": true
+                                            }
+                                        },
+                                        {
+                                            "variable": "path",
+                                            "label": "path",
+                                            "description": "Path Prefix not needed for most cases",
+                                            "schema": {
+                                                "type": "string",
+                                                "default": ""
+                                            }
+                                        },
+                                        {
+                                            "variable": "bucket",
+                                            "label": "bucket",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "s3"
+                                                    ]
+                                                ],
+                                                "type": "string",
+                                                "default": "",
+                                                "required": true
+                                            }
+                                        },
+                                        {
+                                            "variable": "accessKey",
+                                            "label": "accessKey",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "s3"
+                                                    ]
+                                                ],
+                                                "type": "string",
+                                                "default": "",
+                                                "required": true
+                                            }
+                                        },
+                                        {
+                                            "variable": "secretKey",
+                                            "label": "secretKey",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "s3"
+                                                    ]
+                                                ],
+                                                "type": "string",
+                                                "default": "",
+                                                "required": true
+                                            }
+                                        },
+                                        {
+                                            "variable": "encrKey",
+                                            "label": "encrKey",
+                                            "description": "The Encryption key is needed for tools like volsync if not needed it will be ignored",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "s3"
+                                                    ]
+                                                ],
+                                                "type": "string",
+                                                "default": "MYSECRETPASSPHRASE",
+                                                "required": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
                     "variable": "workload",
                     "group": "Workload",
                     "label": "",
@@ -11796,6 +11923,22 @@
                                                                                             "schema": {
                                                                                                 "type": "string",
                                                                                                 "default": ""
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "variable": "PUBLIC_DASHBOARD",
+                                                                                            "label": "Enables the public dashboard for guest (unauthenticated) users",
+                                                                                            "schema": {
+                                                                                                "type": "boolean",
+                                                                                                "default": false
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "variable": "APP_NAME",
+                                                                                            "label": "Used to define the application's name in the dashboard and in notifications",
+                                                                                            "schema": {
+                                                                                                "type": "string",
+                                                                                                "default": "Speedtest Tracker"
                                                                                             }
                                                                                         },
                                                                                         {
@@ -12998,6 +13141,107 @@
                                             }
                                         },
                                         {
+                                            "variable": "volsync",
+                                            "label": "VolSync (Experimental)",
+                                            "description": "Backup, Restore and Synchronise PVC storage",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "pvc"
+                                                    ]
+                                                ],
+                                                "type": "list",
+                                                "default": [],
+                                                "items": [
+                                                    {
+                                                        "variable": "VolSyncEntry",
+                                                        "label": "VolSync Configuration",
+                                                        "schema": {
+                                                            "additional_attrs": true,
+                                                            "type": "dict",
+                                                            "attrs": [
+                                                                {
+                                                                    "variable": "name",
+                                                                    "label": "Name",
+                                                                    "description": "Name of backup configuration",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "",
+                                                                        "required": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "type",
+                                                                    "label": "Type VolSync/Backup",
+                                                                    "description": "Sets the VolSync Type",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "restic",
+                                                                        "enum": [
+                                                                            {
+                                                                                "value": "restic",
+                                                                                "description": "Restic"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "credentials",
+                                                                    "label": "Credentials",
+                                                                    "description": "Name of credentials in the credentials section",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "",
+                                                                        "required": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "dest",
+                                                                    "label": "VolSync Destination (Restore)",
+                                                                    "description": "VolSYnc Destination is the location where data is the reciever and configures recovery of backups",
+                                                                    "schema": {
+                                                                        "additional_attrs": true,
+                                                                        "type": "dict",
+                                                                        "attrs": [
+                                                                            {
+                                                                                "variable": "enabled",
+                                                                                "label": "Enable",
+                                                                                "schema": {
+                                                                                    "type": "boolean",
+                                                                                    "default": true
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "src",
+                                                                    "label": "VolSync Source (Backup)",
+                                                                    "description": "VolSYnc Source is the location where data is the sender and creates backups to storage",
+                                                                    "schema": {
+                                                                        "additional_attrs": true,
+                                                                        "type": "dict",
+                                                                        "attrs": [
+                                                                            {
+                                                                                "variable": "enabled",
+                                                                                "label": "Enable",
+                                                                                "schema": {
+                                                                                    "type": "boolean",
+                                                                                    "default": true
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
                                             "variable": "static",
                                             "label": "Static Fixed PVC Bindings (Experimental)",
                                             "description": "Link a PVC to a specific storage location",
@@ -13524,6 +13768,107 @@
                                                 ],
                                                 "type": "string",
                                                 "default": ""
+                                            }
+                                        },
+                                        {
+                                            "variable": "volsync",
+                                            "label": "VolSync (Experimental)",
+                                            "description": "Backup, Restore and Synchronise PVC storage",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "pvc"
+                                                    ]
+                                                ],
+                                                "type": "list",
+                                                "default": [],
+                                                "items": [
+                                                    {
+                                                        "variable": "VolSyncEntry",
+                                                        "label": "VolSync Configuration",
+                                                        "schema": {
+                                                            "additional_attrs": true,
+                                                            "type": "dict",
+                                                            "attrs": [
+                                                                {
+                                                                    "variable": "name",
+                                                                    "label": "Name",
+                                                                    "description": "Name of backup configuration",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "",
+                                                                        "required": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "type",
+                                                                    "label": "Type VolSync/Backup",
+                                                                    "description": "Sets the VolSync Type",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "restic",
+                                                                        "enum": [
+                                                                            {
+                                                                                "value": "restic",
+                                                                                "description": "Restic"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "credentials",
+                                                                    "label": "Credentials",
+                                                                    "description": "Name of credentials in the credentials section",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "",
+                                                                        "required": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "dest",
+                                                                    "label": "VolSync Destination (Restore)",
+                                                                    "description": "VolSYnc Destination is the location where data is the reciever and configures recovery of backups",
+                                                                    "schema": {
+                                                                        "additional_attrs": true,
+                                                                        "type": "dict",
+                                                                        "attrs": [
+                                                                            {
+                                                                                "variable": "enabled",
+                                                                                "label": "Enable",
+                                                                                "schema": {
+                                                                                    "type": "boolean",
+                                                                                    "default": true
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "src",
+                                                                    "label": "VolSync Source (Backup)",
+                                                                    "description": "VolSYnc Source is the location where data is the sender and creates backups to storage",
+                                                                    "schema": {
+                                                                        "additional_attrs": true,
+                                                                        "type": "dict",
+                                                                        "attrs": [
+                                                                            {
+                                                                                "variable": "enabled",
+                                                                                "label": "Enable",
+                                                                                "schema": {
+                                                                                    "type": "boolean",
+                                                                                    "default": true
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
                                             }
                                         },
                                         {
@@ -15198,48 +15543,10 @@
                                                         }
                                                     },
                                                     {
-                                                        "variable": "serverName",
-                                                        "label": "serverName",
-                                                        "schema": {
-                                                            "type": "string",
-                                                            "default": ""
-                                                        }
-                                                    },
-                                                    {
                                                         "variable": "revision",
                                                         "label": "revision",
                                                         "schema": {
                                                             "type": "string",
-                                                            "default": ""
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "endpointURL",
-                                                        "label": "endpointURL",
-                                                        "schema": {
-                                                            "type": "string",
-                                                            "show_if": [
-                                                                [
-                                                                    "enabled",
-                                                                    "=",
-                                                                    true
-                                                                ]
-                                                            ],
-                                                            "default": ""
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "destinationPath",
-                                                        "label": "destinationPath",
-                                                        "schema": {
-                                                            "type": "string",
-                                                            "show_if": [
-                                                                [
-                                                                    "enabled",
-                                                                    "=",
-                                                                    true
-                                                                ]
-                                                            ],
                                                             "default": ""
                                                         }
                                                     },
@@ -15259,8 +15566,9 @@
                                                         }
                                                     },
                                                     {
-                                                        "variable": "provider",
-                                                        "label": "provider",
+                                                        "variable": "credentials",
+                                                        "label": "Credentials",
+                                                        "description": "Name of the credentials in the credentials section",
                                                         "schema": {
                                                             "type": "string",
                                                             "show_if": [
@@ -15270,215 +15578,8 @@
                                                                     true
                                                                 ]
                                                             ],
-                                                            "default": "s3",
-                                                            "enum": [
-                                                                {
-                                                                    "value": "s3",
-                                                                    "description": "S3"
-                                                                },
-                                                                {
-                                                                    "value": "azure",
-                                                                    "description": "Azure"
-                                                                },
-                                                                {
-                                                                    "value": "google",
-                                                                    "description": "Google"
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "s3",
-                                                        "label": "s3",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "s3"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "region",
-                                                                    "label": "region",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "bucket",
-                                                                    "label": "bucket",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "accessKey",
-                                                                    "label": "accessKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "secretKey",
-                                                                    "label": "secretKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "azure",
-                                                        "label": "azure (EXTREMELY EXPERIMENTAL)",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "azure"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "connectionString",
-                                                                    "label": "connectionString",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageAccount",
-                                                                    "label": "storageAccount",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageKey",
-                                                                    "label": "storageKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "show_if": [
-                                                                            [
-                                                                                "enabled",
-                                                                                "=",
-                                                                                true
-                                                                            ]
-                                                                        ],
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageSasToken",
-                                                                    "label": "storageSasToken",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "containerName",
-                                                                    "label": "containerName",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "serviceName",
-                                                                    "label": "serviceName",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "blob"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "inheritFromAzureAD",
-                                                                    "label": "inheritFromAzureAD",
-                                                                    "schema": {
-                                                                        "type": "boolean",
-                                                                        "default": false
-                                                                    }
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "google",
-                                                        "label": "google (EXTREMELY EXPERIMENTAL)",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "google"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "bucket",
-                                                                    "label": "bucket",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "gkeEnvironment",
-                                                                    "label": "gkeEnvironment",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "applicationCredentials",
-                                                                    "label": "applicationCredentials",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                }
-                                                            ]
+                                                            "default": "",
+                                                            "required": true
                                                         }
                                                     }
                                                 ]
@@ -15516,21 +15617,6 @@
                                                         }
                                                     },
                                                     {
-                                                        "variable": "endpointURL",
-                                                        "label": "endpointURL",
-                                                        "schema": {
-                                                            "type": "string",
-                                                            "show_if": [
-                                                                [
-                                                                    "enabled",
-                                                                    "=",
-                                                                    true
-                                                                ]
-                                                            ],
-                                                            "default": ""
-                                                        }
-                                                    },
-                                                    {
                                                         "variable": "method",
                                                         "label": "method",
                                                         "schema": {
@@ -15561,8 +15647,9 @@
                                                         }
                                                     },
                                                     {
-                                                        "variable": "provider",
-                                                        "label": "provider",
+                                                        "variable": "credentials",
+                                                        "label": "Credentials",
+                                                        "description": "Name of the credentials in the credentials section",
                                                         "schema": {
                                                             "type": "string",
                                                             "show_if": [
@@ -15572,208 +15659,8 @@
                                                                     true
                                                                 ]
                                                             ],
-                                                            "default": "s3",
-                                                            "enum": [
-                                                                {
-                                                                    "value": "s3",
-                                                                    "description": "S3"
-                                                                },
-                                                                {
-                                                                    "value": "azure",
-                                                                    "description": "Azure"
-                                                                },
-                                                                {
-                                                                    "value": "google",
-                                                                    "description": "Google"
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "s3",
-                                                        "label": "s3",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "s3"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "region",
-                                                                    "label": "region",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "bucket",
-                                                                    "label": "bucket",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "accessKey",
-                                                                    "label": "accessKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "secretKey",
-                                                                    "label": "secretKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "azure",
-                                                        "label": "azure (EXTREMELY EXPERIMENTAL)",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "azure"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "connectionString",
-                                                                    "label": "connectionString",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageAccount",
-                                                                    "label": "storageAccount",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageKey",
-                                                                    "label": "storageKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageSasToken",
-                                                                    "label": "storageSasToken",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "containerName",
-                                                                    "label": "containerName",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "serviceName",
-                                                                    "label": "serviceName",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "blob"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "inheritFromAzureAD",
-                                                                    "label": "inheritFromAzureAD",
-                                                                    "schema": {
-                                                                        "type": "boolean",
-                                                                        "default": false
-                                                                    }
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "google",
-                                                        "label": "google (EXTREMELY EXPERIMENTAL)",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "google"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "bucket",
-                                                                    "label": "bucket",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "gkeEnvironment",
-                                                                    "label": "gkeEnvironment",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "applicationCredentials",
-                                                                    "label": "applicationCredentials",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                }
-                                                            ]
+                                                            "default": "",
+                                                            "required": true
                                                         }
                                                     }
                                                 ]
@@ -17389,38 +17276,36 @@
             ]
         },
         "app_readme": "<p>Speedtest Tracker is a self-hosted internet performance tracking application that runs speedtest checks against Ookla's Speedtest service.</p>\n<p>This App is supplied by TrueCharts, for more information visit the manual: <a href=\"https://truecharts.org/charts/stable/speedtest-tracker\">https://truecharts.org/charts/stable/speedtest-tracker</a></p>\n<hr />\n<p>TrueCharts can only exist due to the incredible effort of our staff.\nPlease consider making a <a href=\"https://truecharts.org/sponsor\">donation</a> or contributing back to the project any way you can!</p>",
-        "detailed_readme": "<hr />\n<h2>title: README</h2>\n<h2>General Info</h2>\n<p>TrueCharts can be installed as both <em>normal</em> Helm Charts or as TrueNAS SCALE Apps.\nBoth solutions are fully supported, but we heavily advice the use of normal Helm Charts where possible</p>\n<p>For more information about this Chart, please check the docs on the TrueCharts <a href=\"https://truecharts.org/charts/stable/speedtest-tracker\">website</a></p>\n<p><strong>This chart is not maintained by the upstream project and any issues with the chart should be raised <a href=\"https://github.com/truecharts/charts/issues/new/choose\">here</a></strong></p>\n<h2>Installation</h2>\n<h3>Helm-Chart installation</h3>\n<p>To install TrueCharts Helm charts using Helm, you can use our OCI Repository.</p>\n<p><code>helm install mychart oci://tccr.io/truecharts/CHARTNAME</code></p>\n<p>For more information on how to install TrueCharts Helm charts, checkout the instructions on the website: https://truecharts.org/helm/</p>\n<h3>TrueNAS SCALE Apps</h3>\n<p>For more information on how to use TrueCharts as TrueNAS SCALE Apps, please checkout the <a href=\"https://truecharts.org/scale/guides/scale-intro\">quick-start guides for TrueNAS SCALE</a>.</p>\n<h2>Configuration Options</h2>\n<p>To view the chart specific options, please view Values.yaml included in the chart.</p>\n<p>All our Charts use a shared \"common\" library chart that contains most of the templating and options.\nFor the complete overview of all available options, please checkout the documentation for them on the website: https://truecharts.org/common/</p>\n<h2>Chart Specific Guides and information</h2>\n<p>All our charts have dedicated documentation pages.\nThe documentation for this chart can be found here:\nhttps://truecharts.org/charts/stable/speedtest-tracker</p>\n<h2>Support</h2>\n<ul>\n<li>See the <a href=\"https://truecharts.org\">Website</a></li>\n<li>Check our <a href=\"https://discord.gg/tVsPTHWTtr\">Discord</a></li>\n<li>Open a <a href=\"https://github.com/truecharts/charts/issues/new/choose\">issue</a></li>\n</ul>\n<hr />\n<h2>Sponsor TrueCharts</h2>\n<p>TrueCharts can only exist due to the incredible effort of our staff.\nPlease consider making a <a href=\"https://truecharts.org/general/sponsor\">donation</a> or contributing back to the project any way you can!</p>\n<p><em>All Rights Reserved - The TrueCharts Project</em></p>",
+        "detailed_readme": "<hr />\n<h2>title: README</h2>\n<h2>General Info</h2>\n<p>TrueCharts can be installed as both <em>normal</em> Helm Charts or as TrueNAS SCALE Apps.\nBoth solutions are fully supported, but we heavily advice the use of normal Helm Charts where possible</p>\n<p>For more information about this Chart, please check the docs on the TrueCharts <a href=\"https://truecharts.org/charts/stable/speedtest-tracker\">website</a></p>\n<p><strong>This chart is not maintained by the upstream project and any issues with the chart should be raised <a href=\"https://github.com/truecharts/charts/issues/new/choose\">here</a></strong></p>\n<h2>Installation</h2>\n<h3>Helm-Chart installation</h3>\n<p>To install TrueCharts Helm charts using Helm, you can use our OCI Repository.</p>\n<p><code>helm install mychart oci://tccr.io/truecharts/CHARTNAME</code></p>\n<p>For more information on how to install TrueCharts Helm charts, checkout the instructions on the website: https://truecharts.org/helm/</p>\n<h3>TrueNAS SCALE Apps</h3>\n<p>For more information on how to use TrueCharts as TrueNAS SCALE Apps, please checkout the <a href=\"https://truecharts.org/scale\">quick-start guides for TrueNAS SCALE</a>.</p>\n<h2>Chart Specific Guides and information</h2>\n<p>All our charts have dedicated documentation pages.\nThe documentation for this chart can be found here:\nhttps://truecharts.org/charts/stable/speedtest-tracker</p>\n<h2>Configuration Options</h2>\n<p>Please note: For TrueNAS SCALE, only options available in the GUI are supported.\nHence most of these docs do not apply to TrueNAS SCALE</p>\n<p>To view the chart specific options, please view Values.yaml included in the chart.\nThe most recent version of which, is available here: https://github.com/truecharts/charts/charts/stable/speedtest-tracker/values.yaml</p>\n<p>All our Charts use a shared \"common\" library chart that contains most of the templating and options.\nFor the complete overview of all available options, please checkout the documentation for them on the website: https://truecharts.org/common/</p>\n<p>For information about the common chart and all defaults included with it, please review its values.yaml file available here: https://github.com/truecharts/library-charts/blob/main/library/common/values.yaml</p>\n<h2>Support</h2>\n<ul>\n<li>See the <a href=\"https://truecharts.org\">Website</a></li>\n<li>Check our <a href=\"https://discord.gg/tVsPTHWTtr\">Discord</a></li>\n<li>Open a <a href=\"https://github.com/truecharts/charts/issues/new/choose\">issue</a></li>\n</ul>\n<hr />\n<h2>Sponsor TrueCharts</h2>\n<p>TrueCharts can only exist due to the incredible effort of our staff.\nPlease consider making a <a href=\"https://truecharts.org/general/sponsor\">donation</a> or contributing back to the project any way you can!</p>\n<p><em>All Rights Reserved - The TrueCharts Project</em></p>",
         "changelog": "<p><em>for the complete changelog, please refer to the website</em></p>\n<p><strong>Important:</strong></p>"
     },
-    "1.11.9": {
+    "2.4.5": {
         "healthy": true,
         "supported": true,
         "healthy_error": null,
-        "location": "/home/runner/_work/catalog/catalog/stable/speedtest-tracker/1.11.9",
-        "last_update": "2024-05-29 12:35:14",
+        "location": "/home/runner/_work/catalog/catalog/stable/speedtest-tracker/2.4.5",
+        "last_update": "2025-12-02 12:08:44",
         "required_features": [
             "definitions/timezone",
             "normalize/interfaceConfiguration",
             "definitions/certificate",
             "definitions/interface"
         ],
-        "human_version": "0.19.0_1.11.9",
-        "version": "1.11.9",
+        "human_version": "1.10.3_2.4.5",
+        "version": "2.4.5",
         "chart_metadata": {
             "annotations": {
-                "max_scale_version": "24.04.0",
-                "min_scale_version": "23.10.0",
                 "truecharts.org/category": "metrics",
                 "truecharts.org/max_helm_version": "3.14",
                 "truecharts.org/min_helm_version": "3.11",
                 "truecharts.org/train": "stable"
             },
             "apiVersion": "v2",
-            "appVersion": "0.19.0",
+            "appVersion": "1.10.3",
             "dependencies": [
                 {
                     "name": "common",
-                    "version": "20.3.11",
+                    "version": "23.0.10",
                     "repository": "oci://tccr.io/truecharts",
                     "condition": "",
                     "alias": "",
@@ -17429,7 +17314,7 @@
                 },
                 {
                     "name": "redis",
-                    "version": "13.3.11",
+                    "version": "14.0.5",
                     "repository": "oci://tccr.io/truecharts",
                     "condition": "redis.enabled",
                     "alias": "",
@@ -17455,13 +17340,13 @@
             ],
             "name": "speedtest-tracker",
             "sources": [
+                "https://ghcr.io/linuxserver/speedtest-tracker",
                 "https://github.com/alexjustesen/speedtest-tracker",
                 "https://github.com/linuxserver/docker-speedtest-tracker",
-                "https://github.com/truecharts/charts/tree/master/charts/stable/speedtest-tracker",
-                "https://ghcr.io/linuxserver/speedtest-tracker"
+                "https://github.com/truecharts/charts/tree/master/charts/stable/speedtest-tracker"
             ],
             "type": "application",
-            "version": "1.11.9"
+            "version": "2.4.5"
         },
         "app_metadata": null,
         "schema": {
@@ -17578,6 +17463,135 @@
                     }
                 },
                 {
+                    "variable": "credentialsList",
+                    "group": "General",
+                    "label": "Credentials (Experimental)",
+                    "schema": {
+                        "type": "list",
+                        "default": [],
+                        "items": [
+                            {
+                                "variable": "credentialsEntry",
+                                "label": "Enter Credentials",
+                                "schema": {
+                                    "additional_attrs": true,
+                                    "type": "dict",
+                                    "attrs": [
+                                        {
+                                            "variable": "name",
+                                            "label": "Name",
+                                            "description": "Name",
+                                            "schema": {
+                                                "type": "string",
+                                                "required": true,
+                                                "default": ""
+                                            }
+                                        },
+                                        {
+                                            "variable": "type",
+                                            "label": "Type",
+                                            "description": "Type of Credential",
+                                            "schema": {
+                                                "type": "string",
+                                                "default": "s3",
+                                                "enum": [
+                                                    {
+                                                        "value": "s3",
+                                                        "description": "s3 Storage"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "variable": "url",
+                                            "label": "url",
+                                            "schema": {
+                                                "type": "string",
+                                                "default": "",
+                                                "required": true
+                                            }
+                                        },
+                                        {
+                                            "variable": "path",
+                                            "label": "path",
+                                            "description": "Path Prefix not needed for most cases",
+                                            "schema": {
+                                                "type": "string",
+                                                "default": ""
+                                            }
+                                        },
+                                        {
+                                            "variable": "bucket",
+                                            "label": "bucket",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "s3"
+                                                    ]
+                                                ],
+                                                "type": "string",
+                                                "default": "",
+                                                "required": true
+                                            }
+                                        },
+                                        {
+                                            "variable": "accessKey",
+                                            "label": "accessKey",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "s3"
+                                                    ]
+                                                ],
+                                                "type": "string",
+                                                "default": "",
+                                                "required": true
+                                            }
+                                        },
+                                        {
+                                            "variable": "secretKey",
+                                            "label": "secretKey",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "s3"
+                                                    ]
+                                                ],
+                                                "type": "string",
+                                                "default": "",
+                                                "required": true
+                                            }
+                                        },
+                                        {
+                                            "variable": "encrKey",
+                                            "label": "encrKey",
+                                            "description": "The Encryption key is needed for tools like volsync if not needed it will be ignored",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "s3"
+                                                    ]
+                                                ],
+                                                "type": "string",
+                                                "default": "MYSECRETPASSPHRASE",
+                                                "required": true
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
                     "variable": "workload",
                     "group": "Workload",
                     "label": "",
@@ -17669,6 +17683,22 @@
                                                                                             "schema": {
                                                                                                 "type": "string",
                                                                                                 "default": ""
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "variable": "PUBLIC_DASHBOARD",
+                                                                                            "label": "Enables the public dashboard for guest (unauthenticated) users",
+                                                                                            "schema": {
+                                                                                                "type": "boolean",
+                                                                                                "default": false
+                                                                                            }
+                                                                                        },
+                                                                                        {
+                                                                                            "variable": "APP_NAME",
+                                                                                            "label": "Used to define the application's name in the dashboard and in notifications",
+                                                                                            "schema": {
+                                                                                                "type": "string",
+                                                                                                "default": "Speedtest Tracker"
                                                                                             }
                                                                                         },
                                                                                         {
@@ -18871,6 +18901,107 @@
                                             }
                                         },
                                         {
+                                            "variable": "volsync",
+                                            "label": "VolSync (Experimental)",
+                                            "description": "Backup, Restore and Synchronise PVC storage",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "pvc"
+                                                    ]
+                                                ],
+                                                "type": "list",
+                                                "default": [],
+                                                "items": [
+                                                    {
+                                                        "variable": "VolSyncEntry",
+                                                        "label": "VolSync Configuration",
+                                                        "schema": {
+                                                            "additional_attrs": true,
+                                                            "type": "dict",
+                                                            "attrs": [
+                                                                {
+                                                                    "variable": "name",
+                                                                    "label": "Name",
+                                                                    "description": "Name of backup configuration",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "",
+                                                                        "required": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "type",
+                                                                    "label": "Type VolSync/Backup",
+                                                                    "description": "Sets the VolSync Type",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "restic",
+                                                                        "enum": [
+                                                                            {
+                                                                                "value": "restic",
+                                                                                "description": "Restic"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "credentials",
+                                                                    "label": "Credentials",
+                                                                    "description": "Name of credentials in the credentials section",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "",
+                                                                        "required": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "dest",
+                                                                    "label": "VolSync Destination (Restore)",
+                                                                    "description": "VolSYnc Destination is the location where data is the reciever and configures recovery of backups",
+                                                                    "schema": {
+                                                                        "additional_attrs": true,
+                                                                        "type": "dict",
+                                                                        "attrs": [
+                                                                            {
+                                                                                "variable": "enabled",
+                                                                                "label": "Enable",
+                                                                                "schema": {
+                                                                                    "type": "boolean",
+                                                                                    "default": true
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "src",
+                                                                    "label": "VolSync Source (Backup)",
+                                                                    "description": "VolSYnc Source is the location where data is the sender and creates backups to storage",
+                                                                    "schema": {
+                                                                        "additional_attrs": true,
+                                                                        "type": "dict",
+                                                                        "attrs": [
+                                                                            {
+                                                                                "variable": "enabled",
+                                                                                "label": "Enable",
+                                                                                "schema": {
+                                                                                    "type": "boolean",
+                                                                                    "default": true
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        {
                                             "variable": "static",
                                             "label": "Static Fixed PVC Bindings (Experimental)",
                                             "description": "Link a PVC to a specific storage location",
@@ -19397,6 +19528,107 @@
                                                 ],
                                                 "type": "string",
                                                 "default": ""
+                                            }
+                                        },
+                                        {
+                                            "variable": "volsync",
+                                            "label": "VolSync (Experimental)",
+                                            "description": "Backup, Restore and Synchronise PVC storage",
+                                            "schema": {
+                                                "show_if": [
+                                                    [
+                                                        "type",
+                                                        "=",
+                                                        "pvc"
+                                                    ]
+                                                ],
+                                                "type": "list",
+                                                "default": [],
+                                                "items": [
+                                                    {
+                                                        "variable": "VolSyncEntry",
+                                                        "label": "VolSync Configuration",
+                                                        "schema": {
+                                                            "additional_attrs": true,
+                                                            "type": "dict",
+                                                            "attrs": [
+                                                                {
+                                                                    "variable": "name",
+                                                                    "label": "Name",
+                                                                    "description": "Name of backup configuration",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "",
+                                                                        "required": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "type",
+                                                                    "label": "Type VolSync/Backup",
+                                                                    "description": "Sets the VolSync Type",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "restic",
+                                                                        "enum": [
+                                                                            {
+                                                                                "value": "restic",
+                                                                                "description": "Restic"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "credentials",
+                                                                    "label": "Credentials",
+                                                                    "description": "Name of credentials in the credentials section",
+                                                                    "schema": {
+                                                                        "type": "string",
+                                                                        "default": "",
+                                                                        "required": true
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "dest",
+                                                                    "label": "VolSync Destination (Restore)",
+                                                                    "description": "VolSYnc Destination is the location where data is the reciever and configures recovery of backups",
+                                                                    "schema": {
+                                                                        "additional_attrs": true,
+                                                                        "type": "dict",
+                                                                        "attrs": [
+                                                                            {
+                                                                                "variable": "enabled",
+                                                                                "label": "Enable",
+                                                                                "schema": {
+                                                                                    "type": "boolean",
+                                                                                    "default": true
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "variable": "src",
+                                                                    "label": "VolSync Source (Backup)",
+                                                                    "description": "VolSYnc Source is the location where data is the sender and creates backups to storage",
+                                                                    "schema": {
+                                                                        "additional_attrs": true,
+                                                                        "type": "dict",
+                                                                        "attrs": [
+                                                                            {
+                                                                                "variable": "enabled",
+                                                                                "label": "Enable",
+                                                                                "schema": {
+                                                                                    "type": "boolean",
+                                                                                    "default": true
+                                                                                }
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                }
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
                                             }
                                         },
                                         {
@@ -21071,48 +21303,10 @@
                                                         }
                                                     },
                                                     {
-                                                        "variable": "serverName",
-                                                        "label": "serverName",
-                                                        "schema": {
-                                                            "type": "string",
-                                                            "default": ""
-                                                        }
-                                                    },
-                                                    {
                                                         "variable": "revision",
                                                         "label": "revision",
                                                         "schema": {
                                                             "type": "string",
-                                                            "default": ""
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "endpointURL",
-                                                        "label": "endpointURL",
-                                                        "schema": {
-                                                            "type": "string",
-                                                            "show_if": [
-                                                                [
-                                                                    "enabled",
-                                                                    "=",
-                                                                    true
-                                                                ]
-                                                            ],
-                                                            "default": ""
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "destinationPath",
-                                                        "label": "destinationPath",
-                                                        "schema": {
-                                                            "type": "string",
-                                                            "show_if": [
-                                                                [
-                                                                    "enabled",
-                                                                    "=",
-                                                                    true
-                                                                ]
-                                                            ],
                                                             "default": ""
                                                         }
                                                     },
@@ -21132,8 +21326,9 @@
                                                         }
                                                     },
                                                     {
-                                                        "variable": "provider",
-                                                        "label": "provider",
+                                                        "variable": "credentials",
+                                                        "label": "Credentials",
+                                                        "description": "Name of the credentials in the credentials section",
                                                         "schema": {
                                                             "type": "string",
                                                             "show_if": [
@@ -21143,215 +21338,8 @@
                                                                     true
                                                                 ]
                                                             ],
-                                                            "default": "s3",
-                                                            "enum": [
-                                                                {
-                                                                    "value": "s3",
-                                                                    "description": "S3"
-                                                                },
-                                                                {
-                                                                    "value": "azure",
-                                                                    "description": "Azure"
-                                                                },
-                                                                {
-                                                                    "value": "google",
-                                                                    "description": "Google"
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "s3",
-                                                        "label": "s3",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "s3"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "region",
-                                                                    "label": "region",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "bucket",
-                                                                    "label": "bucket",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "accessKey",
-                                                                    "label": "accessKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "secretKey",
-                                                                    "label": "secretKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "azure",
-                                                        "label": "azure (EXTREMELY EXPERIMENTAL)",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "azure"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "connectionString",
-                                                                    "label": "connectionString",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageAccount",
-                                                                    "label": "storageAccount",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageKey",
-                                                                    "label": "storageKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "show_if": [
-                                                                            [
-                                                                                "enabled",
-                                                                                "=",
-                                                                                true
-                                                                            ]
-                                                                        ],
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageSasToken",
-                                                                    "label": "storageSasToken",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "containerName",
-                                                                    "label": "containerName",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "serviceName",
-                                                                    "label": "serviceName",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "blob"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "inheritFromAzureAD",
-                                                                    "label": "inheritFromAzureAD",
-                                                                    "schema": {
-                                                                        "type": "boolean",
-                                                                        "default": false
-                                                                    }
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "google",
-                                                        "label": "google (EXTREMELY EXPERIMENTAL)",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "google"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "bucket",
-                                                                    "label": "bucket",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "gkeEnvironment",
-                                                                    "label": "gkeEnvironment",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "applicationCredentials",
-                                                                    "label": "applicationCredentials",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                }
-                                                            ]
+                                                            "default": "",
+                                                            "required": true
                                                         }
                                                     }
                                                 ]
@@ -21389,21 +21377,6 @@
                                                         }
                                                     },
                                                     {
-                                                        "variable": "endpointURL",
-                                                        "label": "endpointURL",
-                                                        "schema": {
-                                                            "type": "string",
-                                                            "show_if": [
-                                                                [
-                                                                    "enabled",
-                                                                    "=",
-                                                                    true
-                                                                ]
-                                                            ],
-                                                            "default": ""
-                                                        }
-                                                    },
-                                                    {
                                                         "variable": "method",
                                                         "label": "method",
                                                         "schema": {
@@ -21434,8 +21407,9 @@
                                                         }
                                                     },
                                                     {
-                                                        "variable": "provider",
-                                                        "label": "provider",
+                                                        "variable": "credentials",
+                                                        "label": "Credentials",
+                                                        "description": "Name of the credentials in the credentials section",
                                                         "schema": {
                                                             "type": "string",
                                                             "show_if": [
@@ -21445,208 +21419,8 @@
                                                                     true
                                                                 ]
                                                             ],
-                                                            "default": "s3",
-                                                            "enum": [
-                                                                {
-                                                                    "value": "s3",
-                                                                    "description": "S3"
-                                                                },
-                                                                {
-                                                                    "value": "azure",
-                                                                    "description": "Azure"
-                                                                },
-                                                                {
-                                                                    "value": "google",
-                                                                    "description": "Google"
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "s3",
-                                                        "label": "s3",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "s3"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "region",
-                                                                    "label": "region",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "bucket",
-                                                                    "label": "bucket",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "accessKey",
-                                                                    "label": "accessKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "secretKey",
-                                                                    "label": "secretKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "azure",
-                                                        "label": "azure (EXTREMELY EXPERIMENTAL)",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "azure"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "connectionString",
-                                                                    "label": "connectionString",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageAccount",
-                                                                    "label": "storageAccount",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageKey",
-                                                                    "label": "storageKey",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "storageSasToken",
-                                                                    "label": "storageSasToken",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "containerName",
-                                                                    "label": "containerName",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "serviceName",
-                                                                    "label": "serviceName",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "blob"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "inheritFromAzureAD",
-                                                                    "label": "inheritFromAzureAD",
-                                                                    "schema": {
-                                                                        "type": "boolean",
-                                                                        "default": false
-                                                                    }
-                                                                }
-                                                            ]
-                                                        }
-                                                    },
-                                                    {
-                                                        "variable": "google",
-                                                        "label": "google (EXTREMELY EXPERIMENTAL)",
-                                                        "schema": {
-                                                            "additional_attrs": true,
-                                                            "type": "dict",
-                                                            "show_if": [
-                                                                [
-                                                                    "provider",
-                                                                    "=",
-                                                                    "google"
-                                                                ]
-                                                            ],
-                                                            "attrs": [
-                                                                {
-                                                                    "variable": "path",
-                                                                    "label": "path",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": "/"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "bucket",
-                                                                    "label": "bucket",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "gkeEnvironment",
-                                                                    "label": "gkeEnvironment",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "variable": "applicationCredentials",
-                                                                    "label": "applicationCredentials",
-                                                                    "schema": {
-                                                                        "type": "string",
-                                                                        "default": ""
-                                                                    }
-                                                                }
-                                                            ]
+                                                            "default": "",
+                                                            "required": true
                                                         }
                                                     }
                                                 ]
@@ -23262,7 +23036,7 @@
             ]
         },
         "app_readme": "<p>Speedtest Tracker is a self-hosted internet performance tracking application that runs speedtest checks against Ookla's Speedtest service.</p>\n<p>This App is supplied by TrueCharts, for more information visit the manual: <a href=\"https://truecharts.org/charts/stable/speedtest-tracker\">https://truecharts.org/charts/stable/speedtest-tracker</a></p>\n<hr />\n<p>TrueCharts can only exist due to the incredible effort of our staff.\nPlease consider making a <a href=\"https://truecharts.org/sponsor\">donation</a> or contributing back to the project any way you can!</p>",
-        "detailed_readme": "<hr />\n<h2>title: README</h2>\n<h2>General Info</h2>\n<p>TrueCharts can be installed as both <em>normal</em> Helm Charts or as TrueNAS SCALE Apps.\nBoth solutions are fully supported, but we heavily advice the use of normal Helm Charts where possible</p>\n<p>For more information about this Chart, please check the docs on the TrueCharts <a href=\"https://truecharts.org/charts/stable/speedtest-tracker\">website</a></p>\n<p><strong>This chart is not maintained by the upstream project and any issues with the chart should be raised <a href=\"https://github.com/truecharts/charts/issues/new/choose\">here</a></strong></p>\n<h2>Installation</h2>\n<h3>Helm-Chart installation</h3>\n<p>To install TrueCharts Helm charts using Helm, you can use our OCI Repository.</p>\n<p><code>helm install mychart oci://tccr.io/truecharts/CHARTNAME</code></p>\n<p>For more information on how to install TrueCharts Helm charts, checkout the instructions on the website: https://truecharts.org/helm/</p>\n<h3>TrueNAS SCALE Apps</h3>\n<p>For more information on how to use TrueCharts as TrueNAS SCALE Apps, please checkout the <a href=\"https://truecharts.org/scale/guides/scale-intro\">quick-start guides for TrueNAS SCALE</a>.</p>\n<h2>Configuration Options</h2>\n<p>To view the chart specific options, please view Values.yaml included in the chart.</p>\n<p>All our Charts use a shared \"common\" library chart that contains most of the templating and options.\nFor the complete overview of all available options, please checkout the documentation for them on the website: https://truecharts.org/common/</p>\n<h2>Chart Specific Guides and information</h2>\n<p>All our charts have dedicated documentation pages.\nThe documentation for this chart can be found here:\nhttps://truecharts.org/charts/stable/speedtest-tracker</p>\n<h2>Support</h2>\n<ul>\n<li>See the <a href=\"https://truecharts.org\">Website</a></li>\n<li>Check our <a href=\"https://discord.gg/tVsPTHWTtr\">Discord</a></li>\n<li>Open a <a href=\"https://github.com/truecharts/charts/issues/new/choose\">issue</a></li>\n</ul>\n<hr />\n<h2>Sponsor TrueCharts</h2>\n<p>TrueCharts can only exist due to the incredible effort of our staff.\nPlease consider making a <a href=\"https://truecharts.org/general/sponsor\">donation</a> or contributing back to the project any way you can!</p>\n<p><em>All Rights Reserved - The TrueCharts Project</em></p>",
+        "detailed_readme": "<hr />\n<h2>title: README</h2>\n<h2>General Info</h2>\n<p>TrueCharts can be installed as both <em>normal</em> Helm Charts or as TrueNAS SCALE Apps.\nBoth solutions are fully supported, but we heavily advice the use of normal Helm Charts where possible</p>\n<p>For more information about this Chart, please check the docs on the TrueCharts <a href=\"https://truecharts.org/charts/stable/speedtest-tracker\">website</a></p>\n<p><strong>This chart is not maintained by the upstream project and any issues with the chart should be raised <a href=\"https://github.com/truecharts/charts/issues/new/choose\">here</a></strong></p>\n<h2>Installation</h2>\n<h3>Helm-Chart installation</h3>\n<p>To install TrueCharts Helm charts using Helm, you can use our OCI Repository.</p>\n<p><code>helm install mychart oci://tccr.io/truecharts/CHARTNAME</code></p>\n<p>For more information on how to install TrueCharts Helm charts, checkout the instructions on the website: https://truecharts.org/helm/</p>\n<h3>TrueNAS SCALE Apps</h3>\n<p>For more information on how to use TrueCharts as TrueNAS SCALE Apps, please checkout the <a href=\"https://truecharts.org/scale\">quick-start guides for TrueNAS SCALE</a>.</p>\n<h2>Chart Specific Guides and information</h2>\n<p>All our charts have dedicated documentation pages.\nThe documentation for this chart can be found here:\nhttps://truecharts.org/charts/stable/speedtest-tracker</p>\n<h2>Configuration Options</h2>\n<p>Please note: For TrueNAS SCALE, only options available in the GUI are supported.\nHence most of these docs do not apply to TrueNAS SCALE</p>\n<p>To view the chart specific options, please view Values.yaml included in the chart.\nThe most recent version of which, is available here: https://github.com/truecharts/charts/charts/stable/speedtest-tracker/values.yaml</p>\n<p>All our Charts use a shared \"common\" library chart that contains most of the templating and options.\nFor the complete overview of all available options, please checkout the documentation for them on the website: https://truecharts.org/common/</p>\n<p>For information about the common chart and all defaults included with it, please review its values.yaml file available here: https://github.com/truecharts/library-charts/blob/main/library/common/values.yaml</p>\n<h2>Support</h2>\n<ul>\n<li>See the <a href=\"https://truecharts.org\">Website</a></li>\n<li>Check our <a href=\"https://discord.gg/tVsPTHWTtr\">Discord</a></li>\n<li>Open a <a href=\"https://github.com/truecharts/charts/issues/new/choose\">issue</a></li>\n</ul>\n<hr />\n<h2>Sponsor TrueCharts</h2>\n<p>TrueCharts can only exist due to the incredible effort of our staff.\nPlease consider making a <a href=\"https://truecharts.org/general/sponsor\">donation</a> or contributing back to the project any way you can!</p>\n<p><em>All Rights Reserved - The TrueCharts Project</em></p>",
         "changelog": "<p><em>for the complete changelog, please refer to the website</em></p>\n<p><strong>Important:</strong></p>"
     }
 }

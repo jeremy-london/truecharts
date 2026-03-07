@@ -67,7 +67,10 @@ def check_version(app):
         last_update=catalog[app_train][app_name]["last_update"]
     )
     with open(CHARTS_DIR/f"{app_train}/{app_name}/{local_version.version}/ix_values.yaml", "r") as f:
-        local_version.tag, local_version.digest = yaml.safe_load(f)["image"]["tag"].split("@", maxsplit=1)
+        stored_tag = yaml.safe_load(f)["image"]["tag"]
+    tag_parts = stored_tag.split("@", maxsplit=1)
+    local_version.tag = tag_parts[0]
+    local_version.digest = tag_parts[1] if len(tag_parts) > 1 else None
     
     checker = checkers[app["check_ver"]["type"]]
     remote_image_version = checker.get_latest_version(
@@ -128,7 +131,10 @@ def create_version_dir(app_name:str, app_train:str, old_version:ChartVersion, ne
     logger.info(f"Version directary initialized with files from {old_dir}")
     with open(CHARTS_DIR/new_dir/"ix_values.yaml", "r") as f:
         ix_values = yaml.safe_load(f)
-    ix_values["image"]["tag"] = f"{new_version.tag}@{new_version.digest}"
+    if new_version.digest:
+        ix_values["image"]["tag"] = f"{new_version.tag}@{new_version.digest}"
+    else:
+        ix_values["image"]["tag"] = new_version.tag
     with open(CHARTS_DIR/new_dir/"Chart.yaml", "r") as f:
         chart = yaml.safe_load(f)
     chart["version"] = new_version.version
