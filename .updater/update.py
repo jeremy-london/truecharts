@@ -1,3 +1,4 @@
+import argparse
 import datetime
 import json
 import shutil
@@ -56,6 +57,15 @@ def parse_version(tags, matcher:str = None, rewriter:str = None):
             if rewriter:
                 return tag, rewriter.format(raw_version)
             return tag, raw_version
+
+    # Fallback: extract a numeric dotted version from available tags.
+    for tag in tags:
+        if match := re.search(r"\d+(?:\.\d+)*", tag):
+            raw_version = match[0]
+            if rewriter:
+                return tag, rewriter.format(raw_version)
+            return tag, raw_version
+
     return tags[0], rewriter.format("") if rewriter else "unknown"
 
 def check_version(app):
@@ -148,11 +158,27 @@ def create_version_dir(app_name:str, app_train:str, old_version:ChartVersion, ne
     return new_dir
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Update chart versions from container registry tags")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Preview changes without writing files or creating commits",
+    )
+    args = parser.parse_args()
+
     for app in apps:
         app_name, app_train = app["name"], app["train"]
         need_update, old_version, new_version = check_version(app)
         if need_update:
             logger.info(f"Updating {app_name} from {old_version.human_version} to {new_version.human_version}")
+            if args.dry_run:
+                logger.info(
+                    "Dry run: would update %s/%s, set tag to %s, and refresh catalog/app_versions/new chart directory",
+                    app_train,
+                    app_name,
+                    f"{new_version.tag}@{new_version.digest}" if new_version.digest else new_version.tag,
+                )
+                continue
             update_catalog(app_name, app_train, old_version, new_version)
             update_app_version_json(app_name, app_train, old_version, new_version)
             versions_dir = create_version_dir(app_name, app_train, old_version, new_version)
@@ -170,7 +196,10 @@ if __name__ == "__main__":
         else:
             logger.info(f"No update needed for {app_name} in {app_train}")
     
-    logger.info("All updates completed. Review commits with:")
-    logger.info(f"  git -C {CHARTS_DIR} log")
-    logger.info("Push changes when ready with:")
-    logger.info(f"  git -C {CHARTS_DIR} push")
+    if args.dry_run:
+        logger.info("Dry run complete. No files were modified and no commits were created.")
+    else:
+        logger.info("All updates completed. Review commits with:")
+        logger.info(f"  git -C {CHARTS_DIR} log")
+        logger.info("Push changes when ready with:")
+        logger.info(f"  git -C {CHARTS_DIR} push")
