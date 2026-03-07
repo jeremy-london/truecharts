@@ -4,14 +4,14 @@
         "supported": true,
         "healthy_error": null,
         "location": "/home/runner/_work/catalog/catalog/stable/prowlarr/17.7.5",
-        "last_update": "2026-03-06 18:28:41",
+        "last_update": "2026-03-06 19:34:21",
         "required_features": [
             "definitions/timezone",
             "normalize/interfaceConfiguration",
             "definitions/certificate",
             "definitions/interface"
         ],
-        "human_version": "2.3.0_17.7.5",
+        "human_version": "2.3.2.5245_17.7.5",
         "version": "17.7.5",
         "chart_metadata": {
             "annotations": {
@@ -21,7 +21,7 @@
                 "truecharts.org/train": "stable"
             },
             "apiVersion": "v2",
-            "appVersion": "2.3.0",
+            "appVersion": "2.3.2.5245",
             "dependencies": [
                 {
                     "name": "common",
