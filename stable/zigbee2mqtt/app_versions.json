@@ -4,14 +4,14 @@
         "supported": true,
         "healthy_error": null,
         "location": "/home/runner/_work/catalog/catalog/stable/zigbee2mqtt/12.3.3",
-        "last_update": "2026-03-06 18:28:45",
+        "last_update": "2026-03-06 19:09:19",
         "required_features": [
             "definitions/timezone",
             "normalize/interfaceConfiguration",
             "definitions/certificate",
             "definitions/interface"
         ],
-        "human_version": "2.9_12.3.3",
+        "human_version": "2.9.1_12.3.3",
         "version": "12.3.3",
         "chart_metadata": {
             "annotations": {
@@ -21,7 +21,7 @@
                 "truecharts.org/train": "stable"
             },
             "apiVersion": "v2",
-            "appVersion": "2.9",
+            "appVersion": "2.9.1",
             "dependencies": [
                 {
                     "name": "common",
