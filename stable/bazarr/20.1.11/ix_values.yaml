@@ -1,0 +1,75 @@
+exportarrImage:
+  pullPolicy: IfNotPresent
+  repository: ghcr.io/onedr0p/exportarr
+  tag: v2.0.1@sha256:727e7bc8f2f0934a2117978c59f4476b954018b849a010ea6cfb380bd6539644
+image:
+  pullPolicy: IfNotPresent
+  repository: ghcr.io/onedr0p/bazarr
+  tag: 1.5.6@sha256:94eee5e3e14430b7b144d4556be73963a7daf6f1bddc25586627f426465482ce
+metrics:
+  main:
+    apiKey: ''
+    enabled: false
+    endpoints:
+    - path: /metrics
+      port: metrics
+    targetSelector: metrics
+    type: servicemonitor
+persistence:
+  config:
+    enabled: true
+    targetSelector:
+      main:
+        exportarr:
+          mountPath: /config
+          readOnly: true
+        main:
+          mountPath: /config
+portal:
+  open:
+    enabled: true
+service:
+  main:
+    ports:
+      main:
+        port: 6767
+        protocol: http
+        targetPort: 6767
+  metrics:
+    enabled: '{{ .Values.metrics.main.enabled }}'
+    ports:
+      metrics:
+        enabled: true
+        port: 7879
+    type: ClusterIP
+workload:
+  main:
+    podSpec:
+      containers:
+        exportarr:
+          args:
+          - bazarr
+          enabled: '{{ .Values.metrics.main.enabled }}'
+          env:
+            APIKEY: '{{ .Values.metrics.main.apiKey }}'
+            INTERFACE: 0.0.0.0
+            PORT: '{{ .Values.service.metrics.ports.metrics.port }}'
+            URL: '{{ printf "http://%v:%v" (include "tc.v1.common.lib.chart.names.fullname"
+              $) .Values.service.main.ports.main.port }}'
+          imageSelector: exportarrImage
+          probes:
+            liveness:
+              enabled: true
+              path: /healthz
+              port: '{{ .Values.service.metrics.ports.metrics.port }}'
+              type: http
+            readiness:
+              enabled: true
+              path: /healthz
+              port: '{{ .Values.service.metrics.ports.metrics.port }}'
+              type: http
+            startup:
+              enabled: true
+              path: /healthz
+              port: '{{ .Values.service.metrics.ports.metrics.port }}'
+              type: http
