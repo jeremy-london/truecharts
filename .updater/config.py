@@ -108,18 +108,6 @@ APPS = [
             }
     },
     {
-        "name": "overseerr",
-        "train": "stable",
-            "check_ver": {
-                "type": "dockerhub",
-                "package_owner": "sctx",
-                "package_name": "overseerr",
-                "anchor_tag": "latest",
-                "version_matcher": build_catalog_version_matcher("stable", "overseerr"),
-                "version_rewriter": "{}",
-            }
-    },
-    {
         "name": "plex",
         "train": "stable",
             "check_ver": {

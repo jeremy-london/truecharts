@@ -19,7 +19,6 @@ Below is a list of all the applications I use on my system, as managed via this 
 - ombi
 - open-webui
 - openebs
-- overseerr
 - plex
 - prometheus-operator
 - portainer
