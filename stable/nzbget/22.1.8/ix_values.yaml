@@ -1,6 +1,6 @@
 image:
   pullPolicy: IfNotPresent
-  repository: docker.io/linuxserver/nzbget
+  repository: oci.trueforge.org/containerforge/nzbget
   tag: "26.0.20260306"
 persistence:
   config:

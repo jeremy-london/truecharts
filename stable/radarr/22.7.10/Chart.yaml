@@ -4,7 +4,7 @@ annotations:
   truecharts.org/min_helm_version: '3.11'
   truecharts.org/train: stable
 apiVersion: v2
-appVersion: 6.0.4
+appVersion: '6.1.1.10317'
 dependencies:
 - alias: ''
   condition: ''

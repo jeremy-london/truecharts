@@ -4,14 +4,14 @@
         "supported": true,
         "healthy_error": null,
         "location": "/home/runner/_work/catalog/catalog/stable/radarr/22.7.10",
-        "last_update": "2026-03-06 18:28:42",
+        "last_update": "2026-03-06 19:31:59",
         "required_features": [
             "definitions/timezone",
             "normalize/interfaceConfiguration",
             "definitions/certificate",
             "definitions/interface"
         ],
-        "human_version": "6.0.4_22.7.10",
+        "human_version": "6.1.1.10317_22.7.10",
         "version": "22.7.10",
         "chart_metadata": {
             "annotations": {
@@ -21,7 +21,7 @@
                 "truecharts.org/train": "stable"
             },
             "apiVersion": "v2",
-            "appVersion": "6.0.4",
+            "appVersion": "6.1.1.10317",
             "dependencies": [
                 {
                     "name": "common",
