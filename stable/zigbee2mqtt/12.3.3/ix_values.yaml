@@ -1,0 +1,88 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: docker.io/koenkk/zigbee2mqtt
+  tag: 2@sha256:574b2bd0dcbb59fae6edbbb81a35b5563291d3825da0225f0078aa5575dac37f
+persistence:
+  data:
+    enabled: true
+    mountPath: /data
+    targetSelectAll: true
+portal:
+  open:
+    enabled: true
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsNonRoot: false
+    runAsUser: 0
+service:
+  main:
+    ports:
+      main:
+        port: 10103
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            USE_CUSTOM_CONFIG_FILE: false
+            ZIGBEE2MQTT_CONFIG_FRONTEND_PORT: '{{ .Values.service.main.ports.main.port
+              }}'
+            ZIGBEE2MQTT_CONFIG_MQTT_PASSWORD: ''
+            ZIGBEE2MQTT_CONFIG_MQTT_USER: ''
+            ZIGBEE2MQTT_DATA: /data
+      initContainers:
+        init-config:
+          args:
+          - "if [ -f /data/configuration.yaml ] || [ ${USE_CUSTOM_CONFIG_FILE} ==\
+            \ true ]; then\n  echo \"Initial configuration exists or User selected\
+            \ to use custom configuration\nfile. Skipping...\"; else\n  echo \"Creating\
+            \ initial configuration\";\n  touch /data/configuration.yaml;\n  echo\
+            \ \"# Configuration bellow will be always be overridden\" >> /data/configuration.yaml;\n\
+            \  echo \"# from environment settings on the Scale Apps UI.\" >> /data/configuration.yaml;\n\
+            \  echo \"# You however will not see this values change in the file.\"\
+            \ >>\n/data/configuration.yaml;\n  echo \"# It's a generated file based\
+            \ on the values provided on initial\ninstall.\" >> /data/configuration.yaml;\n\
+            \  echo \"##########################################################\"\
+            \ >>\n/data/configuration.yaml;\n  echo \"frontend:\" >> /data/configuration.yaml;\n\
+            \  echo \"  port: $ZIGBEE2MQTT_CONFIG_FRONTEND_PORT\" >> /data/configuration.yaml;\n\
+            \  echo \"permit_join: $ZIGBEE2MQTT_CONFIG_PERMIT_JOIN\" >> /data/configuration.yaml;\n\
+            \  echo \"mqtt:\" >> /data/configuration.yaml;\n  echo \"  server: $ZIGBEE2MQTT_CONFIG_MQTT_SERVER\"\
+            \ >> /data/configuration.yaml;\n  echo \"  base_topic: $ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC\"\
+            \ >> /data/configuration.yaml;\n  if [ ! -z \"$ZIGBEE2MQTT_CONFIG_MQTT_USER\"\
+            \ ];\n  then\n    echo \"  user: $ZIGBEE2MQTT_CONFIG_MQTT_USER\" >> /data/configuration.yaml;\n\
+            \  fi;\n  if [ ! -z \"$ZIGBEE2MQTT_CONFIG_MQTT_PASSWORD\" ];\n  then\n\
+            \    echo \"  password: $ZIGBEE2MQTT_CONFIG_MQTT_PASSWORD\" >> /data/configuration.yaml;\n\
+            \  fi;\n  echo \"serial:\" >> /data/configuration.yaml;\n  echo \"  port:\
+            \ $ZIGBEE2MQTT_CONFIG_SERIAL_PORT\" >> /data/configuration.yaml;\n  echo\
+            \ \"  adapter: $ZIGBEE2MQTT_CONFIG_SERIAL_ADAPTER\" >> /data/configuration.yaml;\n\
+            \  echo \"##########################################################\"\
+            \ >>\n/data/configuration.yaml;\n  echo 'Initial configuration file created\
+            \ at \"/data/configuration.yaml\"';\nfi;\n"
+          command:
+          - /bin/sh
+          - -c
+          enabled: true
+          env:
+            USE_CUSTOM_CONFIG_FILE: '{{ .Values.workload.main.podSpec.containers.main.env.USE_CUSTOM_CONFIG_FILE
+              }}'
+            ZIGBEE2MQTT_CONFIG_FRONTEND_PORT: '{{ .Values.service.main.ports.main.port
+              }}'
+            ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC: '{{ .Values.workload.main.podSpec.containers.main.env.ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC
+              }}'
+            ZIGBEE2MQTT_CONFIG_MQTT_PASSWORD: '{{ .Values.secret.ZIGBEE2MQTT_CONFIG_MQTT_PASSWORD
+              }}'
+            ZIGBEE2MQTT_CONFIG_MQTT_SERVER: '{{ .Values.workload.main.podSpec.containers.main.env.ZIGBEE2MQTT_CONFIG_MQTT_SERVER
+              }}'
+            ZIGBEE2MQTT_CONFIG_MQTT_USER: '{{ .Values.secret.ZIGBEE2MQTT_CONFIG_MQTT_USER
+              }}'
+            ZIGBEE2MQTT_CONFIG_PERMIT_JOIN: '{{ .Values.workload.main.podSpec.containers.main.env.ZIGBEE2MQTT_CONFIG_PERMIT_JOIN
+              }}'
+            ZIGBEE2MQTT_CONFIG_SERIAL_ADAPTER: '{{ .Values.workload.main.podSpec.containers.main.env.ZIGBEE2MQTT_CONFIG_SERIAL_ADAPTER
+              }}'
+            ZIGBEE2MQTT_CONFIG_SERIAL_PORT: '{{ .Values.workload.main.podSpec.containers.main.env.ZIGBEE2MQTT_CONFIG_SERIAL_PORT
+              }}'
+          imageSelector: image
+          type: init
