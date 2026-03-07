@@ -1,0 +1,36 @@
+annotations:
+  truecharts.org/category: home-automation
+  truecharts.org/max_helm_version: '3.14'
+  truecharts.org/min_helm_version: '3.11'
+  truecharts.org/train: stable
+apiVersion: v2
+appVersion: .0.0
+dependencies:
+- alias: ''
+  condition: ''
+  import-values: []
+  name: common
+  repository: oci://tccr.io/truecharts
+  tags: []
+  version: 23.0.10
+deprecated: false
+description: Eclipse Mosquitto - An open source MQTT broker
+home: https://truecharts.org/charts/stable/mosquitto
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/mosquitto.webp
+keywords:
+- mosquitto
+- home-automation
+- MQTT
+- eclipse-iot
+kubeVersion: '>=1.24.0-0'
+maintainers:
+- email: info@truecharts.org
+  name: TrueCharts
+  url: https://truecharts.org
+name: mosquitto
+sources:
+- https://github.com/eclipse/mosquitto
+- https://github.com/truecharts/charts/tree/master/charts/stable/mosquitto
+- https://hub.docker.com/_/eclipse-mosquitto
+type: application
+version: 15.0.11
