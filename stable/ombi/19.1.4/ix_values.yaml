@@ -1,0 +1,30 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: linuxserver/ombi
+  tag: "4.53.4"
+mariadb:
+  architecture: standalone
+  auth:
+    database: ombi
+    password: ombi
+    username: ombi
+  enabled: false
+  primary:
+    persistence:
+      enabled: false
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+portal:
+  open:
+    enabled: true
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+service:
+  main:
+    ports:
+      main:
+        port: 3579
+        targetPort: 3579
