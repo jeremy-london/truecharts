@@ -157,6 +157,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "qbittorrent"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
@@ -169,6 +170,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "radarr"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
@@ -181,6 +183,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "sonarr"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
