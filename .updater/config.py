@@ -45,6 +45,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "bazarr"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
