@@ -58,6 +58,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "flaresolverr"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
@@ -70,6 +71,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "home-assistant"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
@@ -82,6 +84,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "mosquitto"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
@@ -120,6 +123,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "plex"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
@@ -132,6 +136,7 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "portainer"),
                 "version_rewriter": "{}",
+                "use_digest": False,
             }
     },
     {
