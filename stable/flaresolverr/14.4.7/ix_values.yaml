@@ -1,0 +1,36 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: ghcr.io/flaresolverr/flaresolverr
+  tag: v3.4.6@sha256:7962759d99d7e125e108e0f5e7f3cdbcd36161776d058d1d9b7153b92ef1af9e
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+portal:
+  open:
+    enabled: false
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsNonRoot: false
+    runAsUser: 0
+service:
+  main:
+    ports:
+      main:
+        port: 8191
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            BROWSER_TIMEOUT: 40000
+            CAPTCHA_SOLVER: none
+            HEADLESS: true
+            HOST: 0.0.0.0
+            LOG_HTML: false
+            LOG_LEVEL: info
+            PORT: '{{ .Values.service.main.ports.main.port }}'
+            TEST_URL: https://www.google.com
