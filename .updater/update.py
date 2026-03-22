@@ -9,6 +9,7 @@ import re
 import copy
 import subprocess
 import sys
+from urllib.parse import urljoin
 
 from config import APPS as apps
 from config import CHARTS_DIR
@@ -47,6 +48,7 @@ class ChartVersion:
     last_update: str
     digest: str = None
     tag: str = None
+    repository: str = None
     
     @property
     def human_version(self):
@@ -65,6 +67,82 @@ def numeric_version_tuple(version: str):
     if re.fullmatch(r"\d+(?:\.\d+)*", version):
         return tuple(int(p) for p in version.split("."))
     return None
+
+
+def _checker_for_repository(repository: str):
+    if repository.startswith("ghcr.io/"):
+        return checkers["ghcr"], repository.removeprefix("ghcr.io/")
+    if repository.startswith("docker.io/"):
+        return checkers["dockerhub"], repository.removeprefix("docker.io/")
+    if repository.startswith("lscr.io/"):
+        return checkers["dockerhub"], repository.removeprefix("lscr.io/")
+    return None, None
+
+
+def validate_tag_exists(repository: str, tag: str) -> bool:
+    checker, image = _checker_for_repository(repository)
+    if not checker or not image:
+        logger.warning("Skipping tag validation for unsupported repository format: %s", repository)
+        return True
+    try:
+        checker.get_latest_version(image=image, label=tag)
+        return True
+    except Exception as e:
+        logger.error("Tag validation failed for %s:%s (%s)", repository, tag, e)
+        return False
+
+
+def _semverish_tuple(tag: str):
+    # Accept strict numeric semver-like tags and common release prefixes.
+    # Examples: 1.2.3, 4.0.17.2952, v1.2.3, version-1.2.3
+    match = re.fullmatch(r"(?:version-|v)?(\d+\.\d+\.\d+(?:\.\d+)*)", tag)
+    if not match:
+        return None
+    ver = match.group(1)
+    return tuple(int(part) for part in ver.split(".")), ver
+
+
+def _list_tags_from_repository(repository: str):
+    checker, image = _checker_for_repository(repository)
+    if not checker or not image:
+        return []
+
+    if isinstance(checker, GHCRChecker):
+        url = urljoin(checker.base_url, f"{image}/tags/list")
+        headers = {"Authorization": f"Bearer {checker._auth(*image.split('/', 1))}"}
+        response = checker.session.get(url, headers=headers, timeout=checker.timeout)
+        response.raise_for_status()
+        return response.json().get("tags", []) or []
+
+    if isinstance(checker, DockerHubChecker):
+        tags = []
+        url = urljoin(checker.base_url, f"repositories/{image}/tags")
+        params = {"page_size": 100, "ordering": "last_updated"}
+        pages = 0
+        while url and pages < 5:
+            response = checker.session.get(url, params=params if pages == 0 else None, timeout=checker.timeout)
+            response.raise_for_status()
+            data = response.json()
+            tags.extend([result.get("name") for result in data.get("results", []) if result.get("name")])
+            url = data.get("next")
+            pages += 1
+        return tags
+
+    return []
+
+
+def find_latest_semverish_tag(repository: str):
+    tags = _list_tags_from_repository(repository)
+    candidates = []
+    for tag in tags:
+        parsed = _semverish_tuple(tag)
+        if parsed:
+            ver_tuple, app_version = parsed
+            candidates.append((tag, app_version, ver_tuple))
+    if not candidates:
+        return None, None
+    best_tag, best_app_version, _ = max(candidates, key=lambda item: (item[2], len(item[2])))
+    return best_tag, best_app_version
 
 def parse_version(tags, matcher:str = None, rewriter:str = None):
     """ Check if one of the tags matches the version pattern and rewrite it to the accepted format """
@@ -107,10 +185,13 @@ def check_version(app):
         last_update=catalog[app_train][app_name]["last_update"]
     )
     with open(CHARTS_DIR/f"{app_train}/{app_name}/{local_version.version}/ix_values.yaml", "r") as f:
-        stored_tag = str(yaml.safe_load(f)["image"]["tag"])
+        ix_values = yaml.safe_load(f)
+    image_repository = str(ix_values["image"]["repository"])
+    stored_tag = str(ix_values["image"]["tag"])
     tag_parts = stored_tag.split("@", maxsplit=1)
     local_version.tag = tag_parts[0]
     local_version.digest = tag_parts[1] if len(tag_parts) > 1 else None
+    local_version.repository = image_repository
     
     checker = checkers[app["check_ver"]["type"]]
     image_ref = f"{app['check_ver']['package_owner']}/{app['check_ver']['package_name']}"
@@ -155,12 +236,47 @@ def check_version(app):
             f"Could not derive a valid app_version for {app_train}/{app_name} "
             f"from tags={remote_tags} using matcher={app['check_ver'].get('version_matcher')!r}"
         )
+    if not validate_tag_exists(image_repository, remote_tag):
+        fallback_tag, fallback_app_version = find_latest_semverish_tag(image_repository)
+        if not fallback_tag:
+            raise ValueError(
+                f"Computed image tag does not exist for {app_train}/{app_name}: "
+                f"{image_repository}:{remote_tag}, and no semver-like fallback tags were found"
+            )
+        if not validate_tag_exists(image_repository, fallback_tag):
+            raise ValueError(
+                f"Computed image tag does not exist for {app_train}/{app_name}: "
+                f"{image_repository}:{remote_tag}, and fallback tag also failed validation: {fallback_tag}"
+            )
+        logger.warning(
+            "Using fallback semver-like tag for %s/%s: %s -> %s",
+            app_train,
+            app_name,
+            remote_tag,
+            fallback_tag,
+        )
+        remote_tag = fallback_tag
+        remote_app_version = fallback_app_version
+        if use_digest:
+            repo_checker, repo_image = _checker_for_repository(image_repository)
+            if repo_checker and repo_image:
+                try:
+                    validated_digest = repo_checker.get_latest_version(image=repo_image, label=remote_tag).digest
+                except Exception as e:
+                    logger.warning(
+                        "Unable to retrieve digest for fallback tag %s on %s (%s). Falling back to tag-only update.",
+                        remote_tag,
+                        image_repository,
+                        e,
+                    )
+                    validated_digest = None
     remote_version = ChartVersion(
         version=increment_version(local_version.version),
         app_version=remote_app_version,
         last_update=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         digest=validated_digest,
-        tag=remote_tag
+        tag=remote_tag,
+        repository=image_repository,
     )
 
     if validated_digest:
@@ -272,13 +388,30 @@ if __name__ == "__main__":
             logger.error("Skipping %s/%s: %s", app_train, app_name, e)
             continue
         if args.force_bump and not need_update:
+            keep_local_tag = bool(old_version.repository and old_version.tag and validate_tag_exists(old_version.repository, old_version.tag))
+            if keep_local_tag:
+                forced_app_version = old_version.app_version
+                forced_tag = old_version.tag
+                forced_digest = old_version.digest if app["check_ver"].get("use_digest", True) else None
+            else:
+                logger.warning(
+                    "Force bump for %s/%s will use resolved remote tag because local tag is invalid: %s:%s",
+                    app_train,
+                    app_name,
+                    old_version.repository,
+                    old_version.tag,
+                )
+                forced_app_version = new_version.app_version
+                forced_tag = new_version.tag
+                forced_digest = new_version.digest if app["check_ver"].get("use_digest", True) else None
             use_digest = app["check_ver"].get("use_digest", True)
             new_version = ChartVersion(
                 version=increment_version(old_version.version),
-                app_version=old_version.app_version,
+                app_version=forced_app_version,
                 last_update=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                digest=old_version.digest if use_digest else None,
-                tag=old_version.tag,
+                digest=forced_digest if use_digest else None,
+                tag=forced_tag,
+                repository=old_version.repository,
             )
             need_update = True
             logger.info("Force bump enabled for %s/%s", app_train, app_name)

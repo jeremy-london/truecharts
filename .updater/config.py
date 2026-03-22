@@ -188,7 +188,6 @@ APPS = [
                 "anchor_tag": "latest",
                 "version_matcher": build_catalog_version_matcher("stable", "sonarr"),
                 "version_rewriter": "{}",
-                "tag_strip_prefix": "version-",
                 "use_digest": False,
             }
     },
