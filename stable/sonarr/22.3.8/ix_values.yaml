@@ -1,0 +1,92 @@
+exportarrImage:
+  pullPolicy: IfNotPresent
+  repository: ghcr.io/onedr0p/exportarr
+  tag: v2.0.1
+image:
+  pullPolicy: IfNotPresent
+  repository: ghcr.io/home-operations/sonarr
+  tag: "4.0.17.2950"
+metrics:
+  main:
+    enabled: true
+    endpoints:
+    - path: /metrics
+      port: metrics
+    prometheusRule:
+      enabled: false
+    targetSelector: metrics
+    type: servicemonitor
+persistence:
+  config:
+    enabled: true
+    targetSelector:
+      main:
+        exportarr:
+          mountPath: /config
+          readOnly: true
+        main:
+          mountPath: /config
+portal:
+  open:
+    enabled: true
+service:
+  main:
+    ports:
+      main:
+        port: 8989
+  metrics:
+    enabled: '{{ .Values.metrics.main.enabled }}'
+    ports:
+      metrics:
+        enabled: true
+        port: 8990
+    type: ClusterIP
+updated: true
+workload:
+  main:
+    podSpec:
+      containers:
+        exportarr:
+          args:
+          - sonarr
+          enabled: '{{ .Values.metrics.main.enabled }}'
+          env:
+            CONFIG: /config/config.xml
+            INTERFACE: 0.0.0.0
+            PORT: '{{ .Values.service.metrics.ports.metrics.port }}'
+            URL: '{{ printf "http://%v:%v" (include "tc.v1.common.lib.chart.names.fullname"
+              $) .Values.service.main.ports.main.port }}'
+          imageSelector: exportarrImage
+          probes:
+            liveness:
+              enabled: true
+              path: /healthz
+              port: '{{ .Values.service.metrics.ports.metrics.port }}'
+              type: http
+            readiness:
+              enabled: true
+              path: /healthz
+              port: '{{ .Values.service.metrics.ports.metrics.port }}'
+              type: http
+            startup:
+              enabled: true
+              path: /healthz
+              port: '{{ .Values.service.metrics.ports.metrics.port }}'
+              type: http
+        main:
+          env:
+            SONARR__AUTHENTICATION_METHOD: ''
+            SONARR__PORT: '{{ .Values.service.main.ports.main.port }}'
+          probes:
+            liveness:
+              enabled: true
+              path: /ping
+              type: http
+            readiness:
+              enabled: true
+              path: /ping
+              type: http
+            startup:
+              enabled: true
+              path: /ping
+              type: http
