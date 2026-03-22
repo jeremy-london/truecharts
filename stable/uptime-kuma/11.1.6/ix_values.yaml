@@ -1,0 +1,39 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: docker.io/louislam/uptime-kuma
+  tag: "2.2.1"
+metrics:
+  main:
+    enabled: true
+    endpoints:
+    - path: /metrics
+      port: main
+    prometheusRule:
+      enabled: false
+    type: servicemonitor
+persistence:
+  config:
+    enabled: true
+    mountPath: /app/data
+portal:
+  open:
+    enabled: true
+security:
+  PUID: 0
+securityContext:
+  container:
+    runAsGroup: 0
+    runAsNonRoot: false
+    runAsUser: 0
+service:
+  main:
+    ports:
+      main:
+        port: 3001
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          env:
+            UPTIME_KUMA_PORT: '{{ .Values.service.main.ports.main.port }}'
