@@ -1,0 +1,96 @@
+configmap:
+  dashboard:
+    data:
+      prowlarr.json: '{{ .Files.Get "dashboard.json" | indent 8 }}'
+    enabled: true
+    labels:
+      grafana_dashboard: '1'
+exportarrImage:
+  pullPolicy: IfNotPresent
+  repository: ghcr.io/onedr0p/exportarr
+  tag: v2.0.1
+image:
+  pullPolicy: IfNotPresent
+  repository: ghcr.io/home-operations/prowlarr
+  tag: "2.3.4.5307"
+metrics:
+  main:
+    enabled: true
+    endpoints:
+    - path: /metrics
+      port: metrics
+    prometheusRule:
+      enabled: false
+    targetSelector: metrics
+    type: servicemonitor
+persistence:
+  config:
+    enabled: true
+    targetSelector:
+      main:
+        exportarr:
+          mountPath: /config
+          readOnly: true
+        main:
+          mountPath: /config
+portal:
+  open:
+    enabled: true
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+service:
+  main:
+    ports:
+      main:
+        port: 9696
+  metrics:
+    enabled: '{{ .Values.metrics.main.enabled }}'
+    ports:
+      metrics:
+        enabled: true
+        port: 9697
+    type: ClusterIP
+workload:
+  main:
+    podSpec:
+      containers:
+        exportarr:
+          args:
+          - prowlarr
+          enabled: '{{ .Values.metrics.main.enabled }}'
+          env:
+            CONFIG: /config/config.xml
+            INTERFACE: 0.0.0.0
+            PORT: '{{ .Values.service.metrics.ports.metrics.port }}'
+            URL: '{{ printf "http://%v:%v" (include "tc.v1.common.lib.chart.names.fullname"
+              $) .Values.service.main.ports.main.port }}'
+          imageSelector: exportarrImage
+          probes:
+            liveness:
+              enabled: true
+              path: /healthz
+              port: '{{ .Values.service.metrics.ports.metrics.port }}'
+              type: http
+            readiness:
+              enabled: true
+              path: /healthz
+              port: '{{ .Values.service.metrics.ports.metrics.port }}'
+              type: http
+            startup:
+              enabled: true
+              path: /healthz
+              port: '{{ .Values.service.metrics.ports.metrics.port }}'
+              type: http
+        main:
+          env:
+            PROWLARR__AUTH__METHOD: ''
+            PROWLARR__AUTH__REQUIRED: ''
+            PROWLARR__SERVER__PORT: '{{ .Values.service.main.ports.main.port }}'
+          probes:
+            liveness:
+              path: /ping
+            readiness:
+              path: /ping
+            startup:
+              type: tcp
