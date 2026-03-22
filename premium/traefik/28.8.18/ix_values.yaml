@@ -1,0 +1,518 @@
+additionalArguments:
+- --serverstransport.insecureskipverify=true
+- --providers.kubernetesingress.allowexternalnameservices=true
+configmap:
+  dashboard:
+    data:
+      traefik.json: '{{ .Files.Get "dashboard.json" | indent 8 }}'
+    enabled: true
+    labels:
+      grafana_dashboard: '1'
+defaultCertificate: ''
+globalArguments:
+- --global.checknewversion
+image:
+  pullPolicy: IfNotPresent
+  repository: traefik
+  tag: v3.6.11@sha256:acfc80650104f0194a15f73dc1648f517561bc1645391a15705332a064cfc33c
+ingress:
+  main:
+    integrations:
+      homepage:
+        href: https://{{  ( index .Values.ingress.main.hosts 0 ).host  }}/dashboard/
+ingressClass:
+  enabled: false
+  fallbackApiVersion: ''
+  isDefaultClass: false
+ingressRoute:
+  dashboard:
+    annotations: {}
+    enabled: true
+    labels: {}
+logs:
+  access:
+    enabled: false
+    fields:
+      general:
+        defaultmode: keep
+        names: {}
+      headers:
+        defaultmode: drop
+        names: {}
+    filters: {}
+    format: common
+  general:
+    format: common
+    level: ERROR
+metrics:
+  main:
+    enabled: true
+    endpoints:
+    - path: /metrics
+      port: metrics
+    targetSelector: metrics
+    type: servicemonitor
+middlewares:
+  addPrefix: []
+  basicAuth: []
+  bouncer: []
+  buffering: []
+  chain: []
+  corsHeaders: []
+  customFrameOptionsValue: []
+  customRequestHeaders: []
+  customResponseHeaders: []
+  forwardAuth: []
+  geoBlock: []
+  ipWhiteList: []
+  modsecurity: []
+  rateLimit: []
+  realIP: []
+  redirectRegex: []
+  redirectScheme: []
+  rewriteResponseHeaders: []
+  stripPrefixRegex: []
+  themePark: []
+operator:
+  register: true
+persistence:
+  crowdsec-bouncer-tls:
+    enabled: '{{ if .Values.middlewares.bouncer }}true{{ else }}false{{ end }}'
+    expandObjectName: false
+    mountPath: /etc/traefik/crowdsec-certs
+    objectName: crowdsec-bouncer-tls
+    type: secret
+  plugins:
+    enabled: true
+    mountPath: /plugins-storage
+    type: emptyDir
+podOptions:
+  automountServiceAccountToken: true
+portal:
+  open:
+    enabled: true
+    path: /dashboard/
+portalhook:
+  enabled: true
+providers:
+  kubernetesCRD:
+    enabled: true
+    namespaces: []
+  kubernetesIngress:
+    enabled: true
+    namespaces: []
+    publishedService:
+      enabled: true
+rbac:
+  main:
+    clusterWide: true
+    enabled: true
+    primary: true
+    rules:
+    - apiGroups:
+      - ''
+      resources:
+      - nodes
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - ''
+      resources:
+      - endpoints
+      - services
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - discovery.k8s.io
+      resources:
+      - endpointslices
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - ''
+      resources:
+      - services
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - discovery.k8s.io
+      resources:
+      - endpointslices
+      verbs:
+      - list
+      - watch
+    - apiGroups:
+      - ''
+      resources:
+      - secrets
+      verbs:
+      - get
+      - list
+      - watch
+      - update
+      - create
+      - delete
+      - deletecollection
+    - apiGroups:
+      - policy
+      resources:
+      - podsecuritypolicies
+      verbs:
+      - use
+    - apiGroups:
+      - extensions
+      - networking.k8s.io
+      resources:
+      - ingressclasses
+      - ingresses
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - extensions
+      - networking.k8s.io
+      resources:
+      - ingresses/status
+      verbs:
+      - update
+    - apiGroups:
+      - traefik.io
+      resources:
+      - ingressroutes
+      - ingressroutetcps
+      - ingressrouteudps
+      - middlewares
+      - middlewaretcps
+      - serverstransports
+      - serverstransporttcps
+      - tlsoptions
+      - tlsstores
+      - traefikservices
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - ''
+      resources:
+      - namespaces
+      - endpoints
+      - secrets
+      - services
+      - configmaps
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - discovery.k8s.io
+      resources:
+      - endpointslices
+      verbs:
+      - list
+      - watch
+    - apiGroups:
+      - gateway.networking.k8s.io
+      resources:
+      - backendtlspolicies
+      - gatewayclasses
+      - gateways
+      - grpcroutes
+      - httproutes
+      - referencegrants
+      - tcproutes
+      - tlsroutes
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - gateway.networking.k8s.io
+      resources:
+      - backendtlspolicies/status
+      - gatewayclasses/status
+      - gateways/status
+      - grpcroutes/status
+      - httproutes/status
+      - tcproutes/status
+      - tlsroutes/status
+      verbs:
+      - update
+    - apiGroups:
+      - coordination.k8s.io
+      resources:
+      - leases
+      verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+    - apiGroups:
+      - ''
+      resources:
+      - endpoints
+      verbs:
+      - list
+      - watch
+    - apiGroups:
+      - ''
+      resources:
+      - namespaces
+      - pods
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - hub.traefik.io
+      resources:
+      - accesscontrolpolicies
+      - apiaccesses
+      - apiportals
+      - apiratelimits
+      - apis
+      - apiversions
+      - apibundles
+      - apiplans
+      verbs:
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+      - get
+    - apiGroups:
+      - ''
+      resources:
+      - events
+      verbs:
+      - create
+      - patch
+    - apiGroups:
+      - apps
+      resources:
+      - replicasets
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - ''
+      resources:
+      - nodes
+      verbs:
+      - list
+      - watch
+    - apiGroups:
+      - ''
+      resources:
+      - endpoints
+      - services
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - ''
+      resources:
+      - services
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - discovery.k8s.io
+      resources:
+      - endpointslices
+      verbs:
+      - list
+      - watch
+    - apiGroups:
+      - ''
+      resources:
+      - secrets
+      verbs:
+      - list
+    - apiGroups:
+      - ''
+      resources:
+      - secrets
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - extensions
+      - networking.k8s.io
+      resources:
+      - ingresses
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - extensions
+      - networking.k8s.io
+      resources:
+      - ingresses/status
+      verbs:
+      - update
+    - apiGroups:
+      - traefik.io
+      resources:
+      - ingressroutes
+      - ingressroutetcps
+      - ingressrouteudps
+      - middlewares
+      - middlewaretcps
+      - tlsoptions
+      - tlsstores
+      - traefikservices
+      - serverstransports
+      - serverstransporttcps
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - extensions
+      resources:
+      - podsecuritypolicies
+      verbs:
+      - use
+    - apiGroups:
+      - ''
+      resources:
+      - services
+      - endpoints
+      - namespaces
+      - pods
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - discovery.k8s.io
+      resources:
+      - endpointslices
+      verbs:
+      - get
+      - list
+      - watch
+    - apiGroups:
+      - coordination.k8s.io
+      resources:
+      - leases
+      verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+service:
+  main:
+    ports:
+      main:
+        forwardedHeaders:
+          enabled: false
+        port: 9000
+        protocol: http
+        proxyProtocol:
+          enabled: false
+        targetPort: 9000
+  metrics:
+    enabled: true
+    ports:
+      metrics:
+        enabled: true
+        forwardedHeaders:
+          enabled: false
+        port: 9180
+        protocol: http
+        proxyProtocol:
+          enabled: false
+        targetPort: 9180
+    type: ClusterIP
+  tcp:
+    enabled: true
+    externalTrafficPolicy: Local
+    ports:
+      web:
+        enabled: true
+        forwardedHeaders:
+          enabled: false
+          insecureMode: false
+          trustedIPs: []
+        port: 80
+        protocol: http
+        proxyProtocol:
+          enabled: false
+          insecureMode: false
+          trustedIPs: []
+        redirectTo: websecure
+      websecure:
+        enabled: true
+        forwardedHeaders:
+          enabled: false
+          insecureMode: false
+          trustedIPs: []
+        port: 443
+        protocol: https
+        proxyProtocol:
+          enabled: false
+          insecureMode: false
+          trustedIPs: []
+    type: LoadBalancer
+serviceAccount:
+  main:
+    enabled: true
+    primary: true
+tlsOptions:
+  default:
+    cipherSuites:
+    - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+    - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+    - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+    - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+    - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+    - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+    - TLS_AES_128_GCM_SHA256
+    - TLS_AES_256_GCM_SHA384
+    - TLS_CHACHA20_POLY1305_SHA256
+    curvePreferences:
+    - CurveP521
+    - CurveP384
+    - X25519
+    minVersion: VersionTLS12
+    sniStrict: false
+tlsStore: {}
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          args: []
+          probes:
+            liveness:
+              enabled: false
+            readiness:
+              enabled: false
+            startup:
+              enabled: false
+    replicas: 2
+    strategy: RollingUpdate
