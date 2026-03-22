@@ -192,6 +192,15 @@ def check_version(app):
     local_version.tag = tag_parts[0]
     local_version.digest = tag_parts[1] if len(tag_parts) > 1 else None
     local_version.repository = image_repository
+    local_tag_valid = validate_tag_exists(image_repository, local_version.tag)
+    if not local_tag_valid:
+        logger.warning(
+            "Local tag is invalid for configured repository %s/%s: %s:%s",
+            app_train,
+            app_name,
+            image_repository,
+            local_version.tag,
+        )
     
     checker = checkers[app["check_ver"]["type"]]
     image_ref = f"{app['check_ver']['package_owner']}/{app['check_ver']['package_name']}"
@@ -286,7 +295,7 @@ def check_version(app):
 
     local_num = numeric_version_tuple(local_version.app_version)
     remote_num = numeric_version_tuple(remote_app_version)
-    if local_num and remote_num and remote_num < local_num:
+    if local_num and remote_num and remote_num < local_num and local_tag_valid:
         logger.warning(
             "Skipping downgrade for %s/%s: local app_version=%s, remote app_version=%s",
             app_train,
@@ -295,6 +304,14 @@ def check_version(app):
             remote_app_version,
         )
         needs_update = False
+    elif local_num and remote_num and remote_num < local_num and not local_tag_valid:
+        logger.warning(
+            "Allowing downgrade-style repair for %s/%s because local tag is invalid: local=%s remote=%s",
+            app_train,
+            app_name,
+            local_version.app_version,
+            remote_app_version,
+        )
 
     return needs_update, local_version, remote_version  
 
