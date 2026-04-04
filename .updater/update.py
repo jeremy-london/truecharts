@@ -554,7 +554,7 @@ def create_version_dir(
     old_dir = f"{app_train}/{app_name}/{old_version.version}"
     new_dir = f"{app_train}/{app_name}/{new_version.version}"
     logger.info(f"Creating new version directory at {new_dir}")
-    shutil.copytree(CHARTS_DIR / old_dir, CHARTS_DIR / new_dir)
+    shutil.copytree(CHARTS_DIR / old_dir, CHARTS_DIR / new_dir, dirs_exist_ok=True)
     logger.info(f"Version directary initialized with files from {old_dir}")
     with open(CHARTS_DIR / new_dir / "ix_values.yaml", "r") as f:
         ix_values = yaml.safe_load(f)
