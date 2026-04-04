@@ -150,13 +150,12 @@ APPS = [
         "name": "prowlarr",
         "train": "stable",
         "check_ver": {
-            "type": "dockerhub",
-            "package_owner": "linuxserver",
+            "type": "ghcr",
+            "package_owner": "home-operations",
             "package_name": "prowlarr",
-            "anchor_tag": "latest",
-            "version_matcher": build_catalog_version_matcher("stable", "prowlarr"),
+            "version_matcher": r"\d+\.\d+\.\d+\.\d+$",
             "version_rewriter": "{}",
-            "tag_strip_prefix": "version-",
+            "use_digest": False,
         },
     },
     {
