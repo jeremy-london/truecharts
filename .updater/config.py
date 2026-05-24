@@ -63,8 +63,6 @@ APPS = [
             "anchor_tag": "latest",
             "version_matcher": build_catalog_version_matcher("stable", "cloudreve"),
             "version_rewriter": "{}",
-            "allow_latest_semver_override": False,
-            "use_anchor_tag_as_image_tag": True,
             "use_digest": False,
         },
     },
