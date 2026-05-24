@@ -47,6 +47,10 @@ workload:
 
             cp -a /cloudreve/cloudreve /conf-init/cloudreve
 
+            cp -a /cloudreve/entrypoint.sh /conf-init/entrypoint.sh
+
+            chmod +x /conf-init/cloudreve /conf-init/entrypoint.sh
+
             ls -lasht /conf-init
 
             '
