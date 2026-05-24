@@ -65,7 +65,7 @@ APPS = [
             "version_rewriter": "{}",
             "allow_latest_semver_override": False,
             "use_anchor_tag_as_image_tag": True,
-            "use_digest": True,
+            "use_digest": False,
         },
     },
     {
