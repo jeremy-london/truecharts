@@ -1,0 +1,36 @@
+annotations:
+  truecharts.org/category: Cloud
+  truecharts.org/max_helm_version: '3.14'
+  truecharts.org/min_helm_version: '3.11'
+  truecharts.org/train: stable
+apiVersion: v2
+appVersion: 4.16.0
+dependencies:
+- alias: ''
+  condition: ''
+  import-values: []
+  name: common
+  repository: oci://tccr.io/truecharts
+  tags: []
+  version: 23.0.10
+deprecated: false
+description: Self-hosted file management and sharing system, supports multiple storage
+  providers
+home: https://truecharts.org/charts/stable/cloudreve
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/cloudreve.webp
+keywords:
+- cloudreve
+- Cloud
+- Network-Web
+kubeVersion: '>=1.24.0-0'
+maintainers:
+- email: info@truecharts.org
+  name: TrueCharts
+  url: https://truecharts.org
+name: cloudreve
+sources:
+- https://github.com/cloudreve/Cloudreve
+- https://github.com/truecharts/charts/tree/master/charts/stable/cloudreve
+- https://hub.docker.com/r/cloudreve/cloudreve
+type: application
+version: 7.2.7

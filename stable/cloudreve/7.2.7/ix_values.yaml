@@ -1,0 +1,68 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: docker.io/cloudreve/cloudreve
+  tag: "4.16.0"
+persistence:
+  avatarpath:
+    enabled: true
+    mountPath: /cloudreve/avatar
+  config:
+    enabled: true
+    targetSelector:
+      main:
+        data:
+          mountPath: /cloudreve/data
+          subPath: persist-data
+        init:
+          mountPath: /conf-init
+        main:
+          mountPath: /cloudreve
+  uploadpath:
+    enabled: true
+    mountPath: /cloudreve/uploads
+portal:
+  open:
+    enabled: true
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsUser: 0
+service:
+  main:
+    ports:
+      main:
+        port: 5212
+        targetPort: 5212
+workload:
+  main:
+    podSpec:
+      containers:
+        main: {}
+      initContainers:
+        init:
+          command:
+          - /bin/sh
+          - -c
+          - 'set -x
+
+            ls -lasth /cloudreve
+
+            cp -a /cloudreve/cloudreve /conf-init/cloudreve
+
+            cp -a /cloudreve/entrypoint.sh /conf-init/entrypoint.sh
+
+            chmod +x /conf-init/cloudreve /conf-init/entrypoint.sh
+
+            mkdir -p /conf-init/persist-data
+
+            cp -a /cloudreve/data/. /conf-init/persist-data/
+
+            chown -R 568:568 /conf-init/persist-data
+
+            ls -lasht /conf-init
+
+            '
+          enabled: true
+          imageSelector: image
+          type: init
