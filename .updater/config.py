@@ -61,7 +61,7 @@ APPS = [
             "package_owner": "cloudreve",
             "package_name": "cloudreve",
             "anchor_tag": "latest",
-            "version_matcher": r"^4\.16\.0$",
+            "version_matcher": build_catalog_version_matcher("stable", "cloudreve"),
             "version_rewriter": "{}",
             "allow_latest_semver_override": False,
             "use_anchor_tag_as_image_tag": True,
