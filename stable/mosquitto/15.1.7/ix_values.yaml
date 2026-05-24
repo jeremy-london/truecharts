@@ -43,7 +43,7 @@ configmap:
     enabled: true
 image:
   pullPolicy: IfNotPresent
-  repository: eclipse-mosquitto
+  repository: docker.io/library/eclipse-mosquitto
   tag: 2.1.2-alpine
 ingress:
   websockets:
