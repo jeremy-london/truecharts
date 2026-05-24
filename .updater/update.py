@@ -324,7 +324,12 @@ def check_version(app, skip_downgrades: bool = False):
         if latest_source_app_version
         else None
     )
+    allow_latest_semver_override = app["check_ver"].get(
+        "allow_latest_semver_override", True
+    )
     if (
+        allow_latest_semver_override
+        and
         latest_source_tag
         and latest_num
         and (parsed_num is None or latest_num > parsed_num)
@@ -339,7 +344,7 @@ def check_version(app, skip_downgrades: bool = False):
         )
         source_tag = latest_source_tag
         remote_app_version = latest_source_app_version
-    if not same_repo:
+    if allow_latest_semver_override and not same_repo:
         latest_repo_tag, latest_repo_app_version = find_latest_semverish_tag(
             image_repository
         )

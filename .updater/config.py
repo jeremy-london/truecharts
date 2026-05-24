@@ -54,6 +54,20 @@ APPS = [
         },
     },
     {
+        "name": "cloudreve",
+        "train": "stable",
+        "check_ver": {
+            "type": "dockerhub",
+            "package_owner": "cloudreve",
+            "package_name": "cloudreve",
+            "anchor_tag": "4.16.0",
+            "version_matcher": r"^4\.16\.0$",
+            "version_rewriter": "{}",
+            "allow_latest_semver_override": False,
+            "use_digest": True,
+        },
+    },
+    {
         "name": "flaresolverr",
         "train": "stable",
         "check_ver": {
