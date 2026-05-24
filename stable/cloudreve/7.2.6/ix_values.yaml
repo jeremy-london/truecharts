@@ -12,6 +12,9 @@ persistence:
       main:
         init:
           mountPath: /conf-init
+        data:
+          mountPath: /cloudreve/data
+          subPath: persist-data
         main:
           mountPath: /cloudreve
   uploadpath:
@@ -50,6 +53,12 @@ workload:
             cp -a /cloudreve/entrypoint.sh /conf-init/entrypoint.sh
 
             chmod +x /conf-init/cloudreve /conf-init/entrypoint.sh
+
+            mkdir -p /conf-init/persist-data
+
+            cp -a /cloudreve/data/. /conf-init/persist-data/
+
+            chown -R 568:568 /conf-init/persist-data
 
             ls -lasht /conf-init
 
