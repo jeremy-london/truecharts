@@ -370,6 +370,8 @@ def check_version(app, skip_downgrades: bool = False):
         if major_minor:
             remote_app_version = major_minor
     remote_tag = source_tag
+    if app["check_ver"].get("use_anchor_tag_as_image_tag"):
+        remote_tag = app["check_ver"].get("anchor_tag", remote_tag)
     tag_strip_prefix = app["check_ver"].get("tag_strip_prefix")
     if tag_strip_prefix and remote_tag.startswith(tag_strip_prefix):
         remote_tag = remote_tag[len(tag_strip_prefix) :]
