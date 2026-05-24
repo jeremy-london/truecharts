@@ -1,0 +1,55 @@
+image:
+  pullPolicy: IfNotPresent
+  repository: docker.io/cloudreve/cloudreve
+  tag: 4.16.0@sha256:be8a6aa2a125a2de3288ba474b157192a8f1ab7699f80f4693e7288f70e8e4b0
+persistence:
+  avatarpath:
+    enabled: true
+    mountPath: /cloudreve/avatar
+  config:
+    enabled: true
+    targetSelector:
+      main:
+        init:
+          mountPath: /conf-init
+        main:
+          mountPath: /cloudreve
+  uploadpath:
+    enabled: true
+    mountPath: /cloudreve/uploads
+portal:
+  open:
+    enabled: true
+securityContext:
+  container:
+    readOnlyRootFilesystem: false
+    runAsGroup: 0
+    runAsUser: 0
+service:
+  main:
+    ports:
+      main:
+        port: 5212
+        targetPort: 5212
+workload:
+  main:
+    podSpec:
+      containers:
+        main: {}
+      initContainers:
+        init:
+          command:
+          - /bin/sh
+          - -c
+          - 'set -x
+
+            ls -lasth /cloudreve
+
+            cp -a /cloudreve/cloudreve /conf-init/cloudreve
+
+            ls -lasht /conf-init
+
+            '
+          enabled: true
+          imageSelector: image
+          type: init
