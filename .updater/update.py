@@ -465,15 +465,18 @@ def check_version(app, skip_downgrades: bool = False):
         repository=image_repository,
     )
 
+    # A chart should only be versioned when its effective container image
+    # changes.  Registry metadata can report a new app version while the
+    # chart's repository/tag still resolves to the same image; that is not a
+    # meaningful chart upgrade.
+    image_changed = (
+        _canonical_repository(local_version.repository or "")
+        != _canonical_repository(remote_version.repository or "")
+        or local_version.tag != remote_version.tag
+    )
     if validated_digest:
-        needs_update = (
-            validated_digest != local_version.digest or remote_tag != local_version.tag
-        )
-    else:
-        needs_update = (
-            remote_tag != local_version.tag
-            or remote_app_version != local_version.app_version
-        )
+        image_changed = image_changed or local_version.digest != validated_digest
+    needs_update = image_changed
 
     local_num = numeric_version_tuple(local_version.app_version)
     remote_num = numeric_version_tuple(remote_app_version)
