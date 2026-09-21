@@ -2,10 +2,14 @@ name: Update Helm Catalog
 
 on:
   schedule:
-    # Run daily at midnight UTC
-    - cron: '0 0 * * *'
+    # Run every Friday night at approximately 10–11 PM Mountain Time (05:00 UTC Saturday).
+    - cron: '0 5 * * 6'
   # Allow manual triggering
   workflow_dispatch:
+
+concurrency:
+  group: update-helm-catalog
+  cancel-in-progress: false
 
 permissions:
   contents: write  # Ensure the workflow can push to main
