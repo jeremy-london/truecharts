@@ -50,18 +50,12 @@ jobs:
         run: uv run python update.py
         continue-on-error: false
       
-      - name: Check for changes
-        id: check_changes
+      - name: Commit and push changes to main
         run: |
-          if [[ $(git rev-list --count origin/main..HEAD) -ne 0 ]]; then
-            echo "changes=true" >> $GITHUB_OUTPUT
-            echo "Found changes to push"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: update helm catalog"
+            git push origin main
           else
-            echo "changes=false" >> $GITHUB_OUTPUT
-            echo "No changes to push"
+            echo "No changes to commit"
           fi
-      
-      - name: Push changes to main
-        if: steps.check_changes.outputs.changes == 'true'
-        run: |
-          git push origin main
